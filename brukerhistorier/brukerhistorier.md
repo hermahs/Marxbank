@@ -69,3 +69,19 @@ Som en bankkunde ønsker jeg muligheten til å logge ut slik at uvedkommende ikk
 
 ### Illustrerende skjermbilde
 (kommer)
+
+
+## Sparekalkulator (#5) – middels prioritet
+Som en bankkunde ønsker jeg å se hvor mye sparepengene mine kan vokse over en viss tid. 
+
+### Viktig å kunne gjøre
+* Fylle inn startbeløp og fast månedlig beløp
+* Sette spareperiode (i år)
+* Sette rente
+
+### Viktig å kunne se
+* Totalbeløp etter perioden (uten skatt)
+* Avkastning (renters rente-effekt)
+
+### Illustrerende skjermbilde
+(kommer)
