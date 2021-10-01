@@ -1,9 +1,9 @@
 package it1901;
 
-public class SavingsCalculator {
+public class SavingsCalc {
 
     
-    public static long calculator(int monthlyAmount, int lumpAmount, double interestRate, int period) {
+    public static long calculation(int monthlyAmount, int lumpAmount, double interestRate, int period) {
         if (monthlyAmount == 0) {
             double sum = lumpAmount * Math.pow(1 + (interestRate / 100), period);
             return Math.round(sum);
@@ -26,7 +26,12 @@ public class SavingsCalculator {
 
 
     public static void main(String[] args) {
-        long s = SavingsCalculator.calculator(100, 1000, 5, 1);
+        int a = 5;
+        int b = 2;
+        double c = 0.003;
+        int d = 5;
+        
+        double s = SavingsCalc.calculation(a, b, c, d);
         System.out.println(s);
     }
 }
