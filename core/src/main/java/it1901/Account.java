@@ -24,6 +24,8 @@ public abstract class Account {
     private String id;
     @JsonIgnoreProperties({"from", "reciever", "amount", "transactionDate", "dateString", "dm"})
     private List<Transaction> transactions = new LinkedList<Transaction>();
+    @JsonIgnoreProperties({"from", "reciever", "amount", "transactionDate", "dateString", "dm"})
+    private List<Transaction> reservedTransactions = new LinkedList<Transaction>();
     private double balance = 0;
     private double interestRate; // In percent
     private AccountType type;
@@ -114,7 +116,7 @@ public abstract class Account {
     public void withdraw(double amount) {
         if (amount<=0) {
 			throw new IllegalArgumentException("Must withdraw a positive amount");
-		} else if (balance-amount<0) {
+		} else if (getAvailableBalance()-amount<0) {
 			throw new IllegalStateException("Not enough balance on account");
 		}
 		balance-=amount;
@@ -162,6 +164,18 @@ public abstract class Account {
         return this.balance;
     }
 
+    /**
+     * Calculates the available balance on this account,
+     * i.e. total balance minus balance from reserved transactions
+     * @return
+     */
+    public double getAvailableBalance() {
+        double reservedBalance = reservedTransactions.stream()
+            .mapToDouble(t -> t.getAmount())
+            .reduce((a1,a2) -> a1+a2).orElse(0);
+        return this.balance-reservedBalance;
+    }
+
     public void setBalance(double balance) {
         this.balance = balance;
         updateAccount();
@@ -189,6 +203,29 @@ public abstract class Account {
         updateAccount();
     }
 
+    public void addReservedTransaction(Transaction t) {
+        if (this.reservedTransactions.contains(t)) {
+            throw new IllegalStateException("Transaction is already registered");
+        } else if (t==null) {
+            throw new IllegalArgumentException("transaction cannot be null");
+        }
+        this.reservedTransactions.add(t);
+        updateAccount();
+    }
+
+    /**
+     * Commits a reserved transaction by removing it from reservedTransactions,
+     * and creating a new transaction with the same parameters.
+     * @param t
+     */
+    public void commitReservedTransaction(Transaction t) {
+        if (!reservedTransactions.contains(t)) {
+            throw new IllegalStateException("Transaction is not reserved");
+        } 
+        reservedTransactions.remove(t);
+        Transaction t2 = new Transaction(t.getFrom(), t.getReciever(), t.getAmount(), dm);
+    }
+
     /**
      * Adds transaction in the list "transactions"
      * 
@@ -198,6 +235,8 @@ public abstract class Account {
     public void addTransaction(Transaction t) {
         if (this.transactions.contains(t)) {
             throw new IllegalStateException("Transaction is already registered");
+        } else if (t==null) {
+            throw new IllegalArgumentException("transaction cannot be null");
         }
         this.transactions.add(t);
         updateAccount();
