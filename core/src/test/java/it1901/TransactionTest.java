@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.time.LocalDateTime;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -39,6 +40,18 @@ public class TransactionTest {
         a2.deposit(100);
     }
 
+    @Test
+    @DisplayName("test constructors of Transaction")
+    public void testConstructor() {
+        assertThrows(IllegalStateException.class, () -> {
+            transaction = new Transaction(a1, a2, 50, LocalDateTime.now().minusDays(1).format(Transaction.DATE_TIME_FORMATTER), dm);
+        });
+        assertThrows(IllegalArgumentException.class, () -> {
+            transaction = new Transaction(a1, a2, 50, "invalid format", dm);
+        });
+        transaction = new Transaction(a1, a2, 50, LocalDateTime.now().plusDays(1).format(Transaction.DATE_TIME_FORMATTER), dm);
+        assertEquals(LocalDateTime.now().plusDays(1).format(Transaction.DATE_TIME_FORMATTER), transaction.getDateString());
+    }
     
     @Test
     @DisplayName("test commitTransaction with a1 and a2 as param")

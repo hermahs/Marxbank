@@ -1,22 +1,28 @@
 package it1901;
 
+import java.text.DateFormat;
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.Date;
 import java.util.Objects;
 import java.util.UUID;
+import java.time.temporal.ChronoUnit;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-public class Transaction {
-    
-    /*The purpose of the transaction class is to store information about a transaction between
+/**
+ * The purpose of the transaction class is to store information about a transaction between
     two accounts. The information stored should never be changed, so it essentially functions
     as a record, but it is also responsible for withdrawing and depositing the correct amount
-    of balance between the accounts.*/
+    of balance between the accounts.
+ */
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+public class Transaction {
 
     private final String id;
     @JsonIgnoreProperties({"user", "transactions", "balance", "interestRate", "type", "dm", "accountNumber", "name"})
@@ -31,7 +37,7 @@ public class Transaction {
     private DataManager dm;
 
     //autoformats the date text-string 
-    DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+    public final static DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
     /**
      * Initializes transaction object and runs the commitTransaction method.
@@ -48,7 +54,7 @@ public class Transaction {
         this.reciever = reciever;
         this.amount = validateAmount(amount);
         transactionDate = LocalDateTime.now();
-        dateString = dateFormat.format(transactionDate);
+        dateString = DATE_TIME_FORMATTER.format(transactionDate);
         this.dm = dm;
         if(commit) {
             commitTransaction();
@@ -62,13 +68,38 @@ public class Transaction {
     public Transaction(Account from, Account reciever, double amount, DataManager dm) {
         this(UUID.randomUUID().toString(), from, reciever, amount, dm, true);
     }
+    /**
+     * Transaction constructor with transaction date as input
+     * @param from
+     * @param reciever
+     * @param amount
+     * @param dateString
+     * @param dm
+     */
+    public Transaction(Account from, Account reciever, double amount, String dateString, DataManager dm) {
+        this.id = UUID.randomUUID().toString();
+        this.from = from;
+        this.reciever = reciever;
+        this.amount = validateAmount(amount);
+        if (!isValidDate(dateString)) {
+            throw new IllegalArgumentException("Invalid date format");
+        }
+        String date[] = dateString.split("-");
+        LocalDateTime newDate = LocalDateTime.of(Integer.parseInt(date[2]), Integer.parseInt(date[1]), Integer.parseInt(date[0]), 0,0);
+        if(newDate.isBefore(LocalDateTime.now())) {
+            throw new IllegalStateException("Invalid transaction date");
+        }
+        transactionDate = newDate;
+        this.dateString = DATE_TIME_FORMATTER.format(transactionDate);
+        this.dm=dm;        
+    }
 
     public String getId() {
         return this.id;
     }
 
     public String getDateString() {
-        return dateString;
+        return this.dateString;
     }
 
     public LocalDateTime getTransactionDate() {
@@ -90,6 +121,20 @@ public class Transaction {
     public double validateAmount(double amount) {
         if(amount < 1) throw new IllegalArgumentException("Amount cannot be negative");
         return amount;
+    }
+
+    /**
+     * Checks if a date input is valid according to the formatter of this class
+     * @param dateString input date as string
+     * @return true if valid, else false.
+     */
+    public boolean isValidDate(String dateString) {
+        try {
+            DATE_TIME_FORMATTER.parse(dateString);
+        } catch (DateTimeParseException e) {
+            return false;
+        }
+        return true;
     }
 
     /**
