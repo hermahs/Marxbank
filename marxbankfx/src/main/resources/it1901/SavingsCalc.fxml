@@ -8,10 +8,10 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it1901.SavingsCalcController">
    <children>
-      <TextField fx:id="monthlyAmount" onTextChange="#findTotalAmountAble" layoutX="145.0" layoutY="90.0" />
-      <TextField fx:id="lumpAmount" onTextChange="#findTotalAmountAble" layoutX="145.0" layoutY="132.0" />
-      <TextField fx:id="period" onTextChange="#findTotalAmountAble" layoutX="145.0" layoutY="175.0" prefHeight="25.0" prefWidth="74.0" />
-      <TextField fx:id="interestRate" onTextChange="#findTotalAmountAble" layoutX="145.0" layoutY="216.0" prefHeight="25.0" prefWidth="74.0" />
+      <TextField fx:id="monthlyAmount" layoutX="145.0" layoutY="90.0" onTextChange="#findTotalAmountAble" />
+      <TextField fx:id="lumpAmount" layoutX="145.0" layoutY="132.0" onTextChange="#findTotalAmountAble" />
+      <TextField fx:id="period" layoutX="145.0" layoutY="175.0" onTextChange="#findTotalAmountAble" prefHeight="25.0" prefWidth="74.0" />
+      <TextField fx:id="interestRate" layoutX="145.0" layoutY="216.0" onTextChange="#findTotalAmountAble" prefHeight="25.0" prefWidth="74.0" />
 
       <Label layoutX="26.0" layoutY="94.0" text="Fast månedlig beløp:" />
       <Label layoutX="76.0" layoutY="220.0" text="Årlig rente:" />
@@ -28,20 +28,15 @@
             <Font size="30.0" />
          </font>
       </Label>
-      <Label fx:id="totalAmountText" layoutX="321.0" layoutY="185.0" prefHeight="17.0" prefWidth="262.0">
+      <Label fx:id="totalAmountText" layoutX="76.0" layoutY="332.0" prefHeight="30.0" prefWidth="451.0" text="Totalbeløp etter perioden">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Button fx:id="findTotalAmount" onAction="#handleFindTotalAmount" layoutX="78.0" layoutY="265.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="133.0" text="Finn totalbeløp">
+      <Button fx:id="findTotalAmount" layoutX="78.0" layoutY="265.0" mnemonicParsing="false" onAction="#handleFindTotalAmount" prefHeight="30.0" prefWidth="133.0" text="Finn totalbeløp">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Label fx:id="totalAmount" layoutX="399.0" layoutY="232.0" prefHeight="20.0" prefWidth="111.0" textAlignment="CENTER" textFill="#0c0c0c" wrapText="true">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
    </children>
 </AnchorPane>
