@@ -25,9 +25,9 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 public class Transaction {
 
     private final String id;
-    @JsonIgnoreProperties({"user", "transactions", "balance", "interestRate", "type", "dm", "accountNumber", "name"})
+    @JsonIgnoreProperties({"user", "transactions", "reservedTransactions", "balance", "interestRate", "type", "dm", "accountNumber", "name"})
     private final Account from;
-    @JsonIgnoreProperties({"user", "transactions", "balance", "interestRate", "type", "dm", "accountNumber", "name"})
+    @JsonIgnoreProperties({"user", "transactions", "reservedTransactions", "balance", "interestRate", "type", "dm", "accountNumber", "name"})
     private final Account reciever;
     private final double amount;
     @JsonIgnore

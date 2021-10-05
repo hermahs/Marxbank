@@ -17,6 +17,7 @@ public class TransactionController {
     private Account from;
     private Account reciever;
     private double amount;
+    private String dateString;
     private DataManager dm;
 
     private Transaction t;
@@ -65,9 +66,16 @@ public class TransactionController {
             from = Bank.getInstanceBank().getAccount(Integer.parseInt(myAccountsList.getText()));
             reciever = Bank.getInstanceBank().getAccount(Integer.parseInt(recieverText.getText()));
             amount = Integer.parseInt(amountText.getText());
-            
-            t = new Transaction(UUID.randomUUID().toString(), from, reciever, amount, dm, true);
-            transactionCompleteMsg.setVisible(true);
+            dateString = dateText.getText();
+
+            if (dateString.isBlank()) {
+                t = new Transaction(UUID.randomUUID().toString(), from, reciever, amount, dm, true);
+                transactionCompleteMsg.setVisible(true);
+            } else {
+                t = new Transaction(from, reciever, amount, dateString, dm);
+                transactionCompleteMsg.setVisible(true);
+                System.out.println(from.getReservedTransactions());
+            }
             try {
                 dm.save();
             } catch (Exception e) {
