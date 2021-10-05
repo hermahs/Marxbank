@@ -2,12 +2,14 @@ package it1901;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -112,6 +114,36 @@ public class DataManagerTest {
         //t.setAmount(12345);
         //assertEquals(t, this.dm.getTransaction("id"));
         
+    }
+
+    @Test
+    public void testReservedTransactions() throws Exception{
+        this.dm = new DataManager(tempDir.resolve("data").toFile().getCanonicalPath());
+        dm.parse();
+
+        User user = new User("test", "testUsername", "test@email.com", "password", this.dm);
+        Account a = new SavingsAccount("id", user, 5.0, this.dm);
+        a.deposit(100);
+        Account a2 = new SavingsAccount("testId", user, 8.0, this.dm);
+        Transaction t = new Transaction(a, a2, 100, LocalDateTime.now().plusDays(1).format(Transaction.DATE_TIME_FORMATTER), dm);
+
+        dm.save();
+
+        assertEquals(String.format("{\"transactions\":%s}", new ObjectMapper().writeValueAsString(this.dm.getTransactions())), Files.readString(tempDir.resolve("data/transactions.json")));
+
+        dm.save();
+
+        DataManager dm2 = new DataManager(tempDir.resolve("data").toFile().getCanonicalPath());
+        dm2.parse();
+
+        assertEquals(this.dm.getUsers(), dm2.getUsers());
+        assertEquals(this.dm.getAccounts(), dm2.getAccounts());
+        assertEquals(this.dm.getTransactions(), dm2.getTransactions());
+
+        assertTrue(a.getReservedTransactions().contains(t));
+        assertFalse(a.getTransactions().contains(t));
+
+        //TODO: test hva som skjer frem i tid
     }
 
 }

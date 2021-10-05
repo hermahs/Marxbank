@@ -213,6 +213,10 @@ public abstract class Account {
         updateAccount();
     }
 
+    public List<Transaction> getReservedTransactions() {
+        return new LinkedList<>(reservedTransactions);
+    }
+
     /**
      * Commits a reserved transaction by removing it from reservedTransactions,
      * and creating a new transaction with the same parameters.
@@ -224,6 +228,7 @@ public abstract class Account {
         } 
         reservedTransactions.remove(t);
         Transaction t2 = new Transaction(t.getFrom(), t.getReciever(), t.getAmount(), dm);
+        updateAccount();
     }
 
     /**

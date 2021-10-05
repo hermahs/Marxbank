@@ -31,10 +31,11 @@ public class Transaction {
     private final Account reciever;
     private final double amount;
     @JsonIgnore
-    private final LocalDateTime transactionDate;
-    private final String dateString;
+    private LocalDateTime transactionDate;
+    private String dateString;
     @JsonIgnore
     private DataManager dm;
+    private boolean isCommited = false;
 
     //autoformats the date text-string 
     public final static DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("dd-MM-yyyy");
@@ -76,8 +77,8 @@ public class Transaction {
      * @param dateString
      * @param dm
      */
-    public Transaction(Account from, Account reciever, double amount, String dateString, DataManager dm) {
-        this.id = UUID.randomUUID().toString();
+    public Transaction(String id, Account from, Account reciever, double amount, String dateString, DataManager dm) {
+        this.id = id;
         this.from = from;
         this.reciever = reciever;
         this.amount = validateAmount(amount);
@@ -91,11 +92,21 @@ public class Transaction {
         }
         transactionDate = newDate;
         this.dateString = DATE_TIME_FORMATTER.format(transactionDate);
-        this.dm=dm;        
+        this.dm=dm;
+        
+        from.addReservedTransaction(this);
+        dm.addTransaction(this);
+    }
+    public Transaction(Account from, Account reciever, double amount, String dateString, DataManager dm) {
+        this(UUID.randomUUID().toString(), from, reciever, amount, dateString, dm);
     }
 
     public String getId() {
         return this.id;
+    }
+
+    public boolean isCommited() {
+        return this.isCommited;
     }
 
     public String getDateString() {
@@ -151,6 +162,7 @@ public class Transaction {
         reciever.deposit(this.amount);
         from.addTransaction(this);
         reciever.addTransaction(this);
+        isCommited = true;
     }
 
     @Override
