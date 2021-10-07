@@ -47,6 +47,13 @@
             <artifactId>mockito-core</artifactId>
         </dependency>
 
+        <!-- Quartz for job scheduling -->
+        <dependency>
+            <groupId>org.quartz-scheduler</groupId>
+            <artifactId>quartz</artifactId>
+            <version>2.3.2</version>
+        </dependency>
+
     </dependencies>
 
     <build>
