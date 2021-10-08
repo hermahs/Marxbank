@@ -2,6 +2,11 @@ package it1901;
 
 import java.io.IOException;
 
+import org.quartz.SchedulerException;
+import org.quartz.ee.servlet.QuartzInitializerListener;
+import org.quartz.impl.StdSchedulerFactory;
+
+import it1901.jobs.SchedulerService;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -27,6 +32,7 @@ public class LogInController {
         this.dm = new DataManager("../data");
         try {
             dm.parse();
+            dm.save();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -37,7 +43,7 @@ public class LogInController {
     }
 
     @FXML
-    private void handleLogInButton() throws IOException{
+    private void handleLogInButton() throws IOException, SchedulerException{
 
         usernameError.setText("");
         passwordError.setText("");
@@ -64,7 +70,8 @@ public class LogInController {
         }
 
         this.dm.setLoggedInUser(u);
-
+        this.dm.setScheduler(new SchedulerService(StdSchedulerFactory.getDefaultScheduler()));
+        
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("Main.fxml"));
         AnchorPane pane = loader.load();

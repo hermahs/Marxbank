@@ -78,21 +78,17 @@ public class Transaction {
      * @param dm
      */
     public Transaction(String id, Account from, Account reciever, double amount, String dateString, DataManager dm) {
-        this.id = id;
-        this.from = from;
-        this.reciever = reciever;
-        this.amount = validateAmount(amount);
-        if (!isValidDate(dateString)) {
-            throw new IllegalArgumentException("Invalid date format");
-        }
-        String date[] = dateString.split("-");
-        LocalDateTime newDate = LocalDateTime.of(Integer.parseInt(date[2]), Integer.parseInt(date[1]), Integer.parseInt(date[0]), 0,0);
+        LocalDateTime newDate = convertToDate(dateString);
         if(newDate.isBefore(LocalDateTime.now())) {
             throw new IllegalStateException("Invalid transaction date");
         }
         transactionDate = newDate;
         this.dateString = DATE_TIME_FORMATTER.format(transactionDate);
         this.dm=dm;
+        this.id = id;
+        this.from = from;
+        this.reciever = reciever;
+        this.amount = validateAmount(amount);
         
         from.addReservedTransaction(this);
         dm.addTransaction(this);
@@ -139,7 +135,7 @@ public class Transaction {
      * @param dateString input date as string
      * @return true if valid, else false.
      */
-    public boolean isValidDate(String dateString) {
+    public static boolean isValidDate(String dateString) {
         try {
             DATE_TIME_FORMATTER.parse(dateString);
         } catch (DateTimeParseException e) {
@@ -176,6 +172,14 @@ public class Transaction {
         if (!(o instanceof Transaction)) return false;
         Transaction transaction = (Transaction) o;
         return Objects.equals(id, transaction.getId());
+    }
+
+    public static LocalDateTime convertToDate(String dateString) {
+        if (!isValidDate(dateString)) {
+            throw new IllegalArgumentException("Invalid date format");
+        }
+        String date[] = dateString.split("-");
+        return LocalDateTime.of(Integer.parseInt(date[2]), Integer.parseInt(date[1]), Integer.parseInt(date[0]), 0,0);
     }
 
 }

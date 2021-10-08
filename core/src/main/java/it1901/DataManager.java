@@ -12,6 +12,9 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 
+import org.quartz.Scheduler;
+
+import it1901.jobs.SchedulerService;
 import it1901.util.AccountDeserializer;
 import it1901.util.TransactionDeserializer;
 import it1901.util.UserDeserializer;
@@ -26,6 +29,7 @@ public class DataManager {
     private List<User> userList = new ArrayList<User>();
     private List<Account> accountList = new ArrayList<Account>();
     private List<Transaction> transactionList = new ArrayList<Transaction>();
+    private SchedulerService scheduler;
 
     /**
      * DataManager is a class that handles all of the data managing of the app
@@ -98,6 +102,14 @@ public class DataManager {
     public void deleteTransaction(Transaction t) {
         if(!this.transactionList.contains(t)) throw new IllegalArgumentException("Transaction doesn't exist");
         transactionList.remove(t);
+    }
+
+    public void setScheduler(SchedulerService scheduler) {
+        this.scheduler=scheduler;
+    }
+
+    public SchedulerService getScheduler() {
+        return this.scheduler;
     }
 
     public List<User> getUsers() {

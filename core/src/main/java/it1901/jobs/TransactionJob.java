@@ -8,7 +8,7 @@ public class TransactionJob implements Job {
 
     @Override
     public void execute(JobExecutionContext context) throws JobExecutionException {
-        System.out.println("executing job...");      
+        System.out.println("Doing job...");     
     }
     
 }

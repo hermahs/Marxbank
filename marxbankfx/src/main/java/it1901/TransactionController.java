@@ -2,17 +2,10 @@ package it1901;
 
 import java.util.UUID;
 
-import org.quartz.JobBuilder;
-import org.quartz.JobDetail;
-import org.quartz.ScheduleBuilder;
-import org.quartz.Scheduler;
 import org.quartz.SchedulerException;
-import org.quartz.SimpleScheduleBuilder;
-import org.quartz.Trigger;
-import org.quartz.TriggerBuilder;
 import org.quartz.impl.StdSchedulerFactory;
 
-import it1901.jobs.TransactionJob;
+import it1901.jobs.SchedulerService;
 import it1901.util.TextFieldFormatter;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -105,30 +98,9 @@ public class TransactionController {
     }
 
     private void scheduleJob() {
-        try {
-            Scheduler sc = StdSchedulerFactory.getDefaultScheduler();
-            sc.start();
-
-            JobDetail job = JobBuilder.newJob(TransactionJob.class)
-                .withIdentity("transaction")
-                .build();
-
-            Trigger tr = TriggerBuilder.newTrigger()
-                .withIdentity("transactionTrigger")
-                .startNow()
-                .withSchedule(SimpleScheduleBuilder
-                    .simpleSchedule()
-                    .withIntervalInSeconds(5)
-                    .repeatForever())
-                .build();
-            
-            sc.scheduleJob(job, tr);
-
-        } catch (SchedulerException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        
+        if (dm.getScheduler()!=null) {
+            dm.getScheduler().scheduleTransactionJob();  
+        }      
     }
     
 }

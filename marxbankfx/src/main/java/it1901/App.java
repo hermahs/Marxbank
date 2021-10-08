@@ -17,6 +17,10 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+        stage.setOnCloseRequest(e -> {
+            e.consume();
+            closeApp(stage);
+        });
         scene = new Scene(loadFXML("LogIn"), 640, 480);
         stage.setScene(scene);
         stage.show();
@@ -33,6 +37,11 @@ public class App extends Application {
 
     public static void main(String[] args) {
         launch();
+    }
+
+    private void closeApp(Stage stage) {
+        System.out.println("Application closed");
+        stage.close();
     }
 
 }

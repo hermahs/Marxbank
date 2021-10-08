@@ -1,6 +1,7 @@
 package it1901.util;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -41,6 +42,9 @@ public class TransactionDeserializer extends StdDeserializer<Transaction> {
         }
         if (Boolean.parseBoolean(node.get("commited").asText())) {
             return new Transaction(node.get("id").asText(), from, reciever, node.get("amount").asDouble(), dm, false);
+        } else if (Transaction.convertToDate(node.get("dateString").asText()).isBefore(LocalDateTime.now()) && !Boolean.parseBoolean(node.get("commited").asText())) {
+            //if the date is before current date, and transaction is uncommited -> commit this transaction
+            return new Transaction(node.get("id").asText(), from, reciever, node.get("amount").asDouble(), dm, true);
         }
         return new Transaction(node.get("id").asText(), from, reciever, node.get("amount").asDouble(), node.get("dateString").asText(), dm);
     }
