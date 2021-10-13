@@ -84,4 +84,4 @@ Som en bankkunde ønsker jeg å se hvor mye sparepengene mine kan vokse over en 
 * Avkastning (renters rente-effekt)
 
 ### Illustrerende skjermbilde
-(kommer)
+<img src="Illustration-us5.png" width="400">
