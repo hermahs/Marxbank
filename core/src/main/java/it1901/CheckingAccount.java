@@ -21,7 +21,7 @@ public class CheckingAccount extends Account {
 //        super(user, DEFAULT_INTEREST, AccountType.CHECKING, dm, name);
 //    }
 
-    public CheckingAccount(String id, User user, double interestRate, DataManager dm, String name, int accountNumber) {
+    public CheckingAccount() {
         super(id, user, interestRate, AccountType.CHECKING, dm, accountNumber, name);
     }
 

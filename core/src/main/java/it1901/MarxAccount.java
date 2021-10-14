@@ -35,7 +35,7 @@ public class MarxAccount extends Account {
 //        super(id, user, DEFAULT_INTEREST, AccountType.MARX, dm);
 //    }
 
-    public MarxAccount(String id, User user, double interestRate, DataManager dm, String name, int accountNumber) {
+    public MarxAccount() {
         super(id, user, interestRate, AccountType.MARX, dm, accountNumber, name);
     }
 

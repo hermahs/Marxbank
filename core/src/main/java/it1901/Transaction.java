@@ -46,7 +46,7 @@ public class Transaction {
      * @param dm - datamanager object for local storage
      * @param commit - commits the transaction of money between accounts if true
     */
-    public Transaction(String id, Account from, Account reciever, double amount, String date, DataManager dm, boolean commit, boolean add) {
+    public Transaction() {
         this.id = id;
         this.from = from;
         this.reciever = reciever;

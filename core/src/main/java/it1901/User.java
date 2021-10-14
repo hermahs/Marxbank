@@ -25,7 +25,7 @@ public class User {
      * @param email of user
      * @param password of user
      */
-    public User(String id, String username, String email, String password, DataManager dm, boolean add) {
+    public User() {
         this.id = id;
         this.username = validateUsername(username);
         this.email = validateEmail(email);

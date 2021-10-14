@@ -14,7 +14,7 @@ public class CreditAccount extends Account {
 //        this.credtiLimit = DEFAULT_CREDIT_LIMIT;
 //    }
 
-    public CreditAccount(String id, User user, double interestRate, DataManager dm, String name, int accountNumber) {
+    public CreditAccount() {
         super(id, user, interestRate, AccountType.CREDIT, dm, accountNumber, name);
         this.credtiLimit = DEFAULT_CREDIT_LIMIT;
     }

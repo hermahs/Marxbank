@@ -54,7 +54,7 @@ public abstract class Account {
 //        Bank.getInstanceBank().addAccount(this);
 //    }
 
-    public Account(String id, User user, double interestRate, AccountType type, DataManager dm, int accountNumber, String name) {
+    public Account() {
         this.user = user;
         this.interestRate = validateIntereset(interestRate);
         this.id = id;

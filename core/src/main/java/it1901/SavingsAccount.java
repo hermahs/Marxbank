@@ -21,7 +21,7 @@ public class SavingsAccount extends Account {
 //        super(user, DEFAULT_INTEREST, AccountType.SAVING, dm, name);
 //    }
 
-    public SavingsAccount(String id, User user, double interestRate, DataManager dm, String name, int accountNumber) {
+    public SavingsAccount() {
         super(id, user, interestRate, AccountType.SAVING, dm, accountNumber, name);
     }
 
