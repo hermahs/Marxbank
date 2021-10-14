@@ -40,19 +40,19 @@ public abstract class Account {
      * @param type
      * @param dm
      */
-    public Account(String id, User user, double interestRate, AccountType type, DataManager dm) {
-        this.user = user;
-        this.interestRate = validateIntereset(interestRate);
-        this.id = id;
-        this.type = type;
-        this.dm = dm;
-        this.name = "Ny konto";
-        this.accountNumber = generateAccountNumber();
-
-        this.user.addAccount(this);
-        this.dm.addAccount(this);
-        Bank.getInstanceBank().addAccount(this);
-    }
+//    public Account(String id, User user, double interestRate, AccountType type, DataManager dm) {
+//        this.user = user;
+//        this.interestRate = validateIntereset(interestRate);
+//        this.id = id;
+//        this.type = type;
+//        this.dm = dm;
+//        this.name = "Ny konto";
+//        this.accountNumber = generateAccountNumber();
+//
+//        this.user.addAccount(this);
+//        this.dm.addAccount(this);
+//        Bank.getInstanceBank().addAccount(this);
+//    }
 
     public Account(String id, User user, double interestRate, AccountType type, DataManager dm, int accountNumber, String name) {
         this.user = user;
@@ -68,25 +68,25 @@ public abstract class Account {
         Bank.getInstanceBank().addAccount(this);
     }
 
-    public Account(User user, double interestRate, AccountType type, DataManager dm, String name) {
-        this(UUID.randomUUID().toString(), user, interestRate, type, dm);
-        this.name=name;
-    }
+//    public Account(User user, double interestRate, AccountType type, DataManager dm, String name) {
+//        this(UUID.randomUUID().toString(), user, interestRate, type, dm);
+//        this.name=name;
+//    }
 
-    public String getName() {
-        return this.name;
-    }
-
-    public void setName(String name) {
-        if (name==null) {
-            throw new IllegalArgumentException("Name cannot be null");
-        }
-        this.name=name;
-    }
-
-    public int getAccountNumber() {
-        return this.accountNumber;
-    }
+//    public String getName() {
+//        return this.name;
+//    }
+//
+//    public void setName(String name) {
+//        if (name==null) {
+//            throw new IllegalArgumentException("Name cannot be null");
+//        }
+//        this.name=name;
+//    }
+//
+//    public int getAccountNumber() {
+//        return this.accountNumber;
+//    }
 
     /**
      * Deposits an amount to this account.
@@ -125,75 +125,75 @@ public abstract class Account {
      * @param ir
      * @return interest rate.
      */
-    public double validateIntereset(double ir) {
-        if(ir < 0) throw new IllegalArgumentException("Interest rate cannot be negative");
-        return ir;
-    }
-
-    /**
-     * Adds interest rate to the balance on this account.
-     */
-    public void addInterest() {
-        deposit(getBalance()*getInterestRate()/100);
-        updateAccount();
-    }
-
-    public AccountType getType() {
-        return this.type;
-    }
+//    public double validateIntereset(double ir) {
+//        if(ir < 0) throw new IllegalArgumentException("Interest rate cannot be negative");
+//        return ir;
+//    }
+//
+//    /**
+//     * Adds interest rate to the balance on this account.
+//     */
+//    public void addInterest() {
+//        deposit(getBalance()*getInterestRate()/100);
+//        updateAccount();
+//    }
+//
+//    public AccountType getType() {
+//        return this.type;
+//    }
 
     // public void setType(AccountType type) {
     //     this.type = type;
     //     updateAccount();
     // }
 
-    public User getUser() {
-        return this.user;
-    }
+//    public User getUser() {
+//        return this.user;
+//    }
+//
+//    public void setUser(User user) {
+//        if(user == null) throw new IllegalArgumentException("User cannot be null");
+//        this.user = user;
+//        updateAccount();
+//    }
+//    
+//    public double getBalance() {
+//        return this.balance;
+//    }
+//
+//    public void setBalance(double balance) {
+//        this.balance = balance;
+//        updateAccount();
+//    }
+//
+//    public void setBalanceNoUpdate(double balance) {
+//        this.balance = balance;
+//    }
+//
+//    public String getId() {
+//        return this.id;
+//    }
+//
+//    public void setId(String id) {
+//        if(this.dm.checkIfAccountExists(id)) throw new IllegalArgumentException("There already is another user with this id");
+//        if(id == null) throw new IllegalArgumentException("new Id cannot be null");
+//        this.id = id;
+//        updateAccount();
+//    }
 
-    public void setUser(User user) {
-        if(user == null) throw new IllegalArgumentException("User cannot be null");
-        this.user = user;
-        updateAccount();
-    }
-    
-    public double getBalance() {
-        return this.balance;
-    }
-
-    public void setBalance(double balance) {
-        this.balance = balance;
-        updateAccount();
-    }
-
-    public void setBalanceNoUpdate(double balance) {
-        this.balance = balance;
-    }
-
-    public String getId() {
-        return this.id;
-    }
-
-    public void setId(String id) {
-        if(this.dm.checkIfAccountExists(id)) throw new IllegalArgumentException("There already is another user with this id");
-        if(id == null) throw new IllegalArgumentException("new Id cannot be null");
-        this.id = id;
-        updateAccount();
-    }
-
-    public double getInterestRate() {
-        return this.interestRate;
-    }
-
-    public void setInterestRate(double i) {
-        this.interestRate = i;
-        updateAccount();
-    } 
-
-    public void setTransactions(List<Transaction> t) {
-        this.transactions = t;
-        updateAccount();
-    }
+//    public double getInterestRate() {
+//        return this.interestRate;
+//    }
+//
+//    public void setInterestRate(double i) {
+//        this.interestRate = i;
+//        updateAccount();
+//    } 
+//
+//    public void setTransactions(List<Transaction> t) {
+//        this.transactions = t;
+//        updateAccount();
+//    }
 
     /**
      * Adds transaction in the list "transactions"
@@ -201,42 +201,42 @@ public abstract class Account {
      * @param t
      * @exception IllegalStateException if the transaction already is registered.
      */
-    public void addTransaction(Transaction t) {
-        if (this.transactions.contains(t)) {
-            throw new IllegalStateException("Transaction is already registered");
-        }
-        this.transactions.add(t);
-        updateAccount();
-    }
-
-    public List<Transaction> getTransactions() {
-        return new LinkedList<>(this.transactions);
-    }
-
-    /**
-     * Update all variables on this account.
-     */
-    protected void updateAccount() {
-       this.dm.updateAccount(this.id, this);
-    }
-
-    @Override
-    public int hashCode() {
-       return Objects.hash(this.id);
-   }
-
-   @Override
-   public boolean equals(Object o) {
-    if (this == o) return true;
-    if (!(o instanceof Account)) return false;
-    Account account = (Account) o;
-    if (this.balance != account.getBalance()) return false;
-    if (this.accountNumber != account.getAccountNumber()) return false;
-    return Objects.equals(id, account.getId());
-   }
-    public int getNumberOfTransactions() {
-        return getTransactions().size();
-    }
+//    public void addTransaction(Transaction t) {
+//        if (this.transactions.contains(t)) {
+//            throw new IllegalStateException("Transaction is already registered");
+//        }
+//        this.transactions.add(t);
+//        updateAccount();
+//    }
+//
+//    public List<Transaction> getTransactions() {
+//        return new LinkedList<>(this.transactions);
+//    }
+//
+//    /**
+//     * Update all variables on this account.
+//     */
+//    protected void updateAccount() {
+//       this.dm.updateAccount(this.id, this);
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//       return Objects.hash(this.id);
+//   }
+//
+//   @Override
+//   public boolean equals(Object o) {
+//    if (this == o) return true;
+//    if (!(o instanceof Account)) return false;
+//    Account account = (Account) o;
+//    if (this.balance != account.getBalance()) return false;
+//    if (this.accountNumber != account.getAccountNumber()) return false;
+//    return Objects.equals(id, account.getId());
+//   }
+//    public int getNumberOfTransactions() {
+//        return getTransactions().size();
+//    }
 
     abstract int generateAccountNumber();
 

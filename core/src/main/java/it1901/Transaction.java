@@ -67,58 +67,58 @@ public class Transaction {
         }
     }
 
-    public Transaction(String id, Account from, Account reciever, double amount, DataManager dm, boolean commit, boolean add) {
-        this(id, from, reciever, amount, null, dm, commit, add);
-    }
+//    public Transaction(String id, Account from, Account reciever, double amount, DataManager dm, boolean commit, boolean add) {
+//        this(id, from, reciever, amount, null, dm, commit, add);
+//    }
+//
+//    public Transaction(String id, Account from, Account reciever, double amount, DataManager dm, boolean commit) {
+//        this.id = id;
+//        this.from = from;
+//        this.reciever = reciever;
+//        this.amount = validateAmount(amount);
+//        transactionDate = LocalDateTime.now();
+//        dateString = DATE_FORMATTER.format(transactionDate);
+//        this.dm = dm;
+//        if(commit) {
+//            commitTransaction();
+//        }
+//        this.from.addTransaction(this);
+//        this.reciever.addTransaction(this);
+//        this.dm.addTransaction(this);
+//    }
+//
+//    public Transaction(Account from, Account reciever, double amount, DataManager dm) {
+//        this(UUID.randomUUID().toString(), from, reciever, amount, dm, true, true);
+//    }
 
-    public Transaction(String id, Account from, Account reciever, double amount, DataManager dm, boolean commit) {
-        this.id = id;
-        this.from = from;
-        this.reciever = reciever;
-        this.amount = validateAmount(amount);
-        transactionDate = LocalDateTime.now();
-        dateString = DATE_FORMATTER.format(transactionDate);
-        this.dm = dm;
-        if(commit) {
-            commitTransaction();
-        }
-        this.from.addTransaction(this);
-        this.reciever.addTransaction(this);
-        this.dm.addTransaction(this);
-    }
-
-    public Transaction(Account from, Account reciever, double amount, DataManager dm) {
-        this(UUID.randomUUID().toString(), from, reciever, amount, dm, true, true);
-    }
-
-    public String getId() {
-        return this.id;
-    }
-
-    public String getDateString() {
-        return dateString;
-    }
-
-    public LocalDateTime getTransactionDate() {
-        return this.transactionDate;
-    }
-
-    public Account getFrom() {
-        return from;
-    }
-
-    public Account getReciever() {
-        return reciever;
-    }
-
-    public double getAmount() {
-        return this.amount;
-    }
-
-    public double validateAmount(double amount) {
-        if(amount < 1) throw new IllegalArgumentException("Amount cannot be negative");
-        return amount;
-    }
+//    public String getId() {
+//        return this.id;
+//    }
+//
+//    public String getDateString() {
+//        return dateString;
+//    }
+//
+//    public LocalDateTime getTransactionDate() {
+//        return this.transactionDate;
+//    }
+//
+//    public Account getFrom() {
+//        return from;
+//    }
+//
+//    public Account getReciever() {
+//        return reciever;
+//    }
+//
+//    public double getAmount() {
+//        return this.amount;
+//    }
+//
+//    public double validateAmount(double amount) {
+//        if(amount < 1) throw new IllegalArgumentException("Amount cannot be negative");
+//        return amount;
+//    }
 
     /**
      * Commits transaction by withdrawing from and depositing to the respective
@@ -134,39 +134,39 @@ public class Transaction {
         reciever.deposit(this.amount);
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(this.id);
-    }
-
-    /**
-     * Checks if a date input is valid according to the formatter of this class
-     * @param dateString input date as string
-     * @return true if valid, else false.
-    */
-    public static boolean isValidDate(String dateString) {
-        try {
-            DATE_FORMATTER.parse(dateString);
-        } catch (DateTimeParseException e) {
-            return false;
-        }
-        return true;
-    }
-
-    public static LocalDateTime convertToDate(String dateString) {
-        if (!isValidDate(dateString)) {
-            throw new IllegalArgumentException("Invalid date format");
-        }
-        String date[] = dateString.split("-");
-        return LocalDateTime.of(Integer.parseInt(date[2]), Integer.parseInt(date[1]), Integer.parseInt(date[0]), 0,0);
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Transaction)) return false;
-        Transaction transaction = (Transaction) o;
-        return Objects.equals(id, transaction.getId());
-    }
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(this.id);
+//    }
+//
+//    /**
+//     * Checks if a date input is valid according to the formatter of this class
+//     * @param dateString input date as string
+//     * @return true if valid, else false.
+//    */
+//    public static boolean isValidDate(String dateString) {
+//        try {
+//            DATE_FORMATTER.parse(dateString);
+//        } catch (DateTimeParseException e) {
+//            return false;
+//        }
+//        return true;
+//    }
+//
+//    public static LocalDateTime convertToDate(String dateString) {
+//        if (!isValidDate(dateString)) {
+//            throw new IllegalArgumentException("Invalid date format");
+//        }
+//        String date[] = dateString.split("-");
+//        return LocalDateTime.of(Integer.parseInt(date[2]), Integer.parseInt(date[1]), Integer.parseInt(date[0]), 0,0);
+//    }
+//
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (!(o instanceof Transaction)) return false;
+//        Transaction transaction = (Transaction) o;
+//        return Objects.equals(id, transaction.getId());
+//    }
 
 }

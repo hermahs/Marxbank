@@ -22,18 +22,18 @@ public class MarxAccount extends Account {
      * @param dm
      * @param name
      */
-    public MarxAccount(User user, DataManager dm, String name) {
-        super(user, DEFAULT_INTEREST, AccountType.MARX, dm, name);
-    }
-    
-    public MarxAccount(String id, User user, double interestRate, DataManager dm) {
-        super(id, user, interestRate, AccountType.MARX, dm);
-    }
-
-    //second constructor with default value of 0 as interest rate
-    public MarxAccount(String id, User user, DataManager dm) {
-        super(id, user, DEFAULT_INTEREST, AccountType.MARX, dm);
-    }
+//    public MarxAccount(User user, DataManager dm, String name) {
+//        super(user, DEFAULT_INTEREST, AccountType.MARX, dm, name);
+//    }
+//    
+//    public MarxAccount(String id, User user, double interestRate, DataManager dm) {
+//        super(id, user, interestRate, AccountType.MARX, dm);
+//    }
+//
+//    //second constructor with default value of 0 as interest rate
+//    public MarxAccount(String id, User user, DataManager dm) {
+//        super(id, user, DEFAULT_INTEREST, AccountType.MARX, dm);
+//    }
 
     public MarxAccount(String id, User user, double interestRate, DataManager dm, String name, int accountNumber) {
         super(id, user, interestRate, AccountType.MARX, dm, accountNumber, name);
@@ -43,7 +43,7 @@ public class MarxAccount extends Account {
      * generates a unique account number starting with "48"
      */
     @Override
-    int generateAccountNumber() {
+    public int generateAccountNumber() {
         String accNumberString = "48";
         for (int i=0;i<3;i++) {
             accNumberString += "" + (new Random()).nextInt(10);
@@ -56,7 +56,7 @@ public class MarxAccount extends Account {
     }
 
     @Override
-    String getAccountType() {
+    public String getAccountType() {
         return "Marxkonto";
     }
 

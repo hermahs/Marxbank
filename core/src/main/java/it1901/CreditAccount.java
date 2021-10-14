@@ -9,19 +9,19 @@ public class CreditAccount extends Account {
     private double credtiLimit;
     private static final double DEFAULT_CREDIT_LIMIT = 200;
     
-    public CreditAccount(User user, DataManager dm, String name) {
-        super(user, 0, AccountType.CREDIT, dm, name);
-        this.credtiLimit = DEFAULT_CREDIT_LIMIT;
-    }
+//    public CreditAccount(User user, DataManager dm, String name) {
+//        super(user, 0, AccountType.CREDIT, dm, name);
+//        this.credtiLimit = DEFAULT_CREDIT_LIMIT;
+//    }
 
     public CreditAccount(String id, User user, double interestRate, DataManager dm, String name, int accountNumber) {
         super(id, user, interestRate, AccountType.CREDIT, dm, accountNumber, name);
         this.credtiLimit = DEFAULT_CREDIT_LIMIT;
     }
 
-    public double getCreditLimit() {
-        return this.credtiLimit;
-    }
+//    public double getCreditLimit() {
+//        return this.credtiLimit;
+//    }
 
     @Override
     public void withdraw(double amount) {
@@ -34,7 +34,7 @@ public class CreditAccount extends Account {
 
 
     @Override
-    int generateAccountNumber() {
+    public int generateAccountNumber() {
         String accNumberString = "69";
         for (int i=0;i<3;i++) {
             accNumberString += "" + (new Random()).nextInt(10);
@@ -47,7 +47,7 @@ public class CreditAccount extends Account {
     }
 
     @Override
-    String getAccountType() {
+    public String getAccountType() {
         return "Kredittkonto";
     }
     

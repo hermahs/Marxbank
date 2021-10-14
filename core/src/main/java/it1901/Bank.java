@@ -1,6 +1,7 @@
 package it1901;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 /**
      * Bank is on the top of the object hierarchy in the application.
@@ -12,7 +13,8 @@ public class Bank {
     private static Bank bankInstance = null;
 
     //Hashtable with account number as key and the corresponding account as value
-    private Map<Integer, Account> accounts = new HashMap<Integer, Account>();
+    //private Map<Integer, Account> accounts = new HashMap<Integer, Account>();
+    private List<Account> accounts;
 
     private Bank() {
         System.out.println("instance created");
@@ -29,13 +31,13 @@ public class Bank {
         return bankInstance;
     }
 
-    public Map<Integer, Account> getAccounts() {
-        return new HashMap<Integer, Account>(accounts);
-    }
-
-    public void addAccount(Account a) {
-        accounts.put(a.getAccountNumber(), a);
-    }
+//    public Map<Integer, Account> getAccounts() {
+//        return new HashMap<Integer, Account>(accounts);
+//    }
+//
+//    public void addAccount(Account a) {
+//        accounts.put(a.getAccountNumber(), a);
+//    }
 
     public Account getAccount(int accountNumber) {
         if (!accounts.containsKey(accountNumber)) {
@@ -44,8 +46,8 @@ public class Bank {
         return getAccounts().get(accountNumber);
     }
 
-    public void clearAccounts() {
-        accounts=new HashMap<Integer, Account>();
-    }
+//    public void clearAccounts() {
+//        accounts=new HashMap<Integer, Account>();
+//    }
 
 }
