@@ -1,3 +1,25 @@
 
+.loginContainer {}
 
+.menuContainer {
+    
+}
 
+.menuButton {
+    -fx-border: 0;
+    -fx-background-radius: 0;
+    -fx-focus-color: transparent;
+    -fx-background-inset: 0;
+    -fx-border-inset: 0;
+    -fx-border-width: 0;
+}
+
+.menuButton:focus {
+    -fx-border: 0;
+    -fx-border-inset: 0;
+    -fx-border-width: 0;
+}
+
+.active {
+    -fx-color: #E83E2E;
+}

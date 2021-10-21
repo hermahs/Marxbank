@@ -52,6 +52,17 @@ public class MainController {
         });
     }
 
+    private void handleActive() {
+        Arrays.asList(menuBtn1, menuBtn2, menuBtn3, menuBtn4, menuBtn5, savingsCalcMenuBtn).forEach(b -> b.getStyleClass().remove("active"));
+        if (currentContent.equals("Home")) menuBtn1.getStyleClass().add("active");
+        else if (currentContent.equals("MyAccounts")) menuBtn2.getStyleClass().add("active");
+        else if (currentContent.equals("Transaction")) menuBtn3.getStyleClass().add("active");
+        else if (currentContent.equals("MyTransactions")) menuBtn4.getStyleClass().add("active");
+        else if (currentContent.equals("SavingsCalc")) savingsCalcMenuBtn.getStyleClass().add("active");
+        else if (currentContent.equals("MyProfile")) menuBtn5.getStyleClass().add("active");
+
+    }
+
     public void initData() throws IOException {
         this.initData(DataManager.manager().getLoggedInUser());
     }
@@ -73,9 +84,9 @@ public class MainController {
         AnchorPane pane = loader.load();
         HomeController homeController = loader.getController();
         homeController.initData(user);
-
         content.getChildren().setAll(pane);
         currentContent="Home";
+        handleActive();
     }
 
     @FXML
@@ -88,6 +99,7 @@ public class MainController {
 
         content.getChildren().setAll(pane);
         currentContent="MyAccounts";
+        handleActive();
     }
 
     @FXML 
@@ -100,6 +112,7 @@ public class MainController {
 
         content.getChildren().setAll(pane);
         currentContent="Transaction";
+        handleActive();
     }
 
     @FXML
@@ -112,6 +125,7 @@ public class MainController {
 
         content.getChildren().setAll(pane);
         currentContent="MyTransactions";
+        handleActive();
     }
 
     @FXML
@@ -122,6 +136,7 @@ public class MainController {
 
         content.getChildren().setAll(pane);
         currentContent="SavingsCalc";
+        handleActive();
     }
     
     @FXML
@@ -134,5 +149,6 @@ public class MainController {
 
         content.getChildren().setAll(pane);
         currentContent="MyProfile";
+        handleActive();
     }
 }
