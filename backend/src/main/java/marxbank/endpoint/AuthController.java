@@ -3,6 +3,8 @@ package marxbank.endpoint;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -52,7 +54,7 @@ public class AuthController {
         return new LogInResponse(token, new UserResponse(user));
     }
 
-    @GetMapping("login")
+    @GetMapping("/login")
     @Transactional
     public UserResponse login(@RequestHeader(name = "Authorization", required = false) @Nullable String token) {
         return new UserResponse(userRepository.findByToken(token).orElseThrow(IllegalArgumentException::new));
@@ -60,7 +62,7 @@ public class AuthController {
 
     @PostMapping("/signup")
     @Transactional
-    public LogInResponse signUp(@RequestBody SignUpRequest request) {
+    public ResponseEntity<LogInResponse> signUp(@RequestBody SignUpRequest request) {
         System.out.println(request.getUsername());
         User user = request.createUser();
         if (!user.validate()) throw new IllegalStateException("User values are not valid");
@@ -68,7 +70,7 @@ public class AuthController {
 
         userRepository.save(user);
         String token = authService.createTokenForUser(user);
-        return new LogInResponse(token, new UserResponse(user));
+        return ResponseEntity.status(HttpStatus.CREATED).body(new LogInResponse(token, new UserResponse(user)));
     }
 
     @PostMapping("/logout")

@@ -353,4 +353,9 @@ public class DataManager {
         this.transactionList = new ArrayList<Transaction>();
     }
 
+    public static void main(String... args) {
+        UrlHandler.handlePost("/auth/signup", "{\"username\": \"yeetmandeluxe2\", \"password\":\"passwordyeet\", \"email\":\"email@yeetman.com\"}");
+        UrlHandler.handleGet("/users");
+    }
+
 }
