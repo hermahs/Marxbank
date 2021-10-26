@@ -41,29 +41,34 @@ public class AuthController {
         String username = request.getUsername();
         String password = request.getPassword();
         
-        // TODO: legge til egne exceptions her
-        User user = userRepository.findByUsername(username).orElseThrow(IllegalStateException::new);
+        if (!userRepository.findByUsername(username).isPresent()) return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+
+        User user = userRepository.findByUsername(username).get();
         
-        if (!user.getPassword().equals(password)) throw new IllegalStateException();
+        if (!user.getPassword().equals(password)) return ResponseEntity.status(HttpStatus.FORBIDDEN).body(null);
 
         String token = authService.createTokenForUser(user);
 
-        return ResponseEntity.status(HttpStatus.ACCEPTED).body(new LogInResponse(token, new UserResponse(user)));
+        return ResponseEntity.status(HttpStatus.OK).body(new LogInResponse(token, new UserResponse(user)));
     }
 
     @GetMapping("/login")
     @Transactional
     public ResponseEntity<UserResponse> login(@RequestHeader(name = "Authorization", required = false) @Nullable String token) {
-        return ResponseEntity.status(HttpStatus.ACCEPTED).body(new UserResponse(userRepository.findByToken(token).orElseThrow(IllegalArgumentException::new)));
+        
+        if (!userRepository.findByToken(token).isPresent()) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        }
+
+        return ResponseEntity.status(HttpStatus.OK).body(new UserResponse(userRepository.findByToken(token).get()));
     }
 
     @PostMapping("/signup")
     @Transactional
     public ResponseEntity<LogInResponse> signUp(@RequestBody SignUpRequest request) {
-        System.out.println(request.getUsername());
         User user = request.createUser();
-        if (!user.validate()) throw new IllegalStateException("User values are not valid");
-        if (userRepository.findByUsername(user.getUsername()).isPresent()) throw new IllegalStateException("User already exists");
+        if (!user.validate()) return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        if (userRepository.findByUsername(user.getUsername()).isPresent()) return ResponseEntity.status(HttpStatus.CONFLICT).body(null);
 
         userRepository.save(user);
         String token = authService.createTokenForUser(user);
@@ -73,7 +78,7 @@ public class AuthController {
     @PostMapping("/logout")
     public ResponseEntity<Void> logout(@RequestHeader(name = "Authorization", required = false) @Nullable String token) {
         authService.removeToken(token);
-        return ResponseEntity.status(HttpStatus.ACCEPTED).body(null);
+        return ResponseEntity.status(HttpStatus.OK).body(null);
     }
 
 }

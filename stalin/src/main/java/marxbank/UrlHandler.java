@@ -22,7 +22,9 @@ public class UrlHandler {
             connection.setRequestMethod("GET");
             connection.setRequestProperty("Accept", "application/json");
 
-            if (connection.getResponseCode() != 200) {
+            if (connection.getResponseCode() != HttpURLConnection.HTTP_ACCEPTED 
+                    || connection.getResponseCode() != HttpURLConnection.HTTP_CREATED 
+                    || connection.getResponseCode() != HttpURLConnection.HTTP_OK) {
                 throw new RuntimeException("Failed with http code: " + connection.getResponseCode());
             }
 
@@ -35,7 +37,36 @@ public class UrlHandler {
             return output;
 
         } catch (IOException e) {
-            // TODO Auto-generated catch block
+            return null;
+        }
+    }
+
+    public static String handleGetWithAuth(String path, String token) {
+
+        String url = String.format("%s%s", RESTURLSTRING, path);
+
+        try {
+            apiURL = new URL(url);
+            HttpURLConnection connection = (HttpURLConnection) apiURL.openConnection();
+            connection.setRequestMethod("GET");
+            connection.setRequestProperty("Accept", "application/json");
+            connection.setRequestProperty("Authorization", String.format("Bearer:%s", token));
+            
+            if (connection.getResponseCode() != HttpURLConnection.HTTP_ACCEPTED 
+                    || connection.getResponseCode() != HttpURLConnection.HTTP_CREATED 
+                    || connection.getResponseCode() != HttpURLConnection.HTTP_OK) {
+                throw new RuntimeException("Failed with http code: " + connection.getResponseCode());
+            }
+
+            BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+
+            String output = br.lines().collect(Collectors.joining());
+
+            connection.disconnect();
+
+            return output;
+
+        } catch (IOException e) {
             return null;
         }
     }
@@ -53,9 +84,11 @@ public class UrlHandler {
             os.write(data.getBytes());
             os.flush();
 
-            // if (connection.getResponseCode() != HttpURLConnection.HTTP_CREATED) {
-            //     throw new RuntimeException("Failed with http code: " + connection.getResponseCode());
-            // }
+            if (connection.getResponseCode() != HttpURLConnection.HTTP_CREATED 
+                    || connection.getResponseCode() != HttpURLConnection.HTTP_ACCEPTED 
+                    || connection.getResponseCode() != HttpURLConnection.HTTP_OK) {
+                throw new RuntimeException("Failed with http code: " + connection.getResponseCode());
+            }
 
             BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 
@@ -66,8 +99,6 @@ public class UrlHandler {
             return output;
 
         } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
             return null;
         }
     }

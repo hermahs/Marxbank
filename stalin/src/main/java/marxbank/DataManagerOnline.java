@@ -18,6 +18,7 @@ public class DataManagerOnline {
 
     private Long userId = null;
     private String userToken = null;
+    private Boolean loggedIN = false;
 
     private DataManagerOnline() {}
 
@@ -55,15 +56,22 @@ public class DataManagerOnline {
 
         this.userToken = node.get("token").asText();
         this.userId = objectMapper.valueToTree(node.get("userResponse")).get("id").asLong();
-
-        System.out.println(this.userToken);
-        System.out.println(this.userId);
+        this.loggedIN = true;
     }
 
-    public void signup(SignUpRequest request) {
+    public void signup(SignUpRequest request) throws Exception {
         // kryptere passord her et eller annet sted
         String requestString = String.format("{\"username\": \"%s\", \"email\": \"%s\", \"password\": \"%s\"}", request.getUsername(), request.getEmail(), request.getPassword());
         String result = UrlHandler.handlePost("/auth/signup", requestString);
+
+        if (result == null) throw new Exception("Signup error");
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        JsonNode node = objectMapper.readTree(result);
+
+        if (node.has("error")) throw new Exception("Signup Error");
+
+        // maybe return something here??
     }
 
     public void logout() {
