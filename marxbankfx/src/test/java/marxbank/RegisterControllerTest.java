@@ -54,9 +54,9 @@ public class RegisterControllerTest extends ApplicationTest {
     @BeforeEach
     private void beforeEach() throws IOException {
         resetSingleton();
-        DataManager.manager().resetData();
-        DataManager.manager().setPath(tempDir.toFile().getCanonicalPath());
-        existingUser = DataManager.manager().createUser("username", "email@email.com", "password");
+        DataManagerLocal.manager().resetData();
+        DataManagerLocal.manager().setPath(tempDir.toFile().getCanonicalPath());
+        existingUser = DataManagerLocal.manager().createUser("username", "email@email.com", "password");
     }
 
     @Test
@@ -71,7 +71,7 @@ public class RegisterControllerTest extends ApplicationTest {
         clickOn("#password1Text").write("password");
         clickOn("#password2Text").write("password");
         clickOn("#registerBtn");
-        assertTrue(DataManager.manager().getIndexOfUser(existingUser) != -1 && DataManager.manager().checkIfUsernameIsTaken("🎃🎃🎃🎃🎃"));
+        assertTrue(DataManagerLocal.manager().getIndexOfUser(existingUser) != -1 && DataManagerLocal.manager().checkIfUsernameIsTaken("🎃🎃🎃🎃🎃"));
     }
 
     @Test
@@ -81,7 +81,7 @@ public class RegisterControllerTest extends ApplicationTest {
         clickOn("#password1Text").write("pass");
         clickOn("#password2Text").write("pass");
         clickOn("#registerBtn");
-        assertTrue(DataManager.manager().getIndexOfUser(existingUser) != -1 && DataManager.manager().getUsers().size()==1);
+        assertTrue(DataManagerLocal.manager().getIndexOfUser(existingUser) != -1 && DataManagerLocal.manager().getUsers().size()==1);
     }
 
     @Test
@@ -91,7 +91,7 @@ public class RegisterControllerTest extends ApplicationTest {
         clickOn("#password1Text").write("pass");
         clickOn("#password2Text").write("pass");
         clickOn("#registerBtn");
-        assertTrue(DataManager.manager().getIndexOfUser(existingUser) != -1 && DataManager.manager().getUsers().size()==1);
+        assertTrue(DataManagerLocal.manager().getIndexOfUser(existingUser) != -1 && DataManagerLocal.manager().getUsers().size()==1);
         assertEquals("username is too long, must be 30 characters maximum.", ((Label) lookup("#registerFailedMsg").query()).getText());
     }
 
@@ -102,7 +102,7 @@ public class RegisterControllerTest extends ApplicationTest {
         clickOn("#password1Text").write("rightPassword");
         clickOn("#password2Text").write("wrongPassword");
         clickOn("#registerBtn");
-        assertTrue(DataManager.manager().getIndexOfUser(existingUser) != -1 && DataManager.manager().getUsers().size()==1);
+        assertTrue(DataManagerLocal.manager().getIndexOfUser(existingUser) != -1 && DataManagerLocal.manager().getUsers().size()==1);
         assertEquals("Passwords dont match", ((Label) lookup("#registerFailedMsg").query()).getText());
     }
 
@@ -112,7 +112,7 @@ public class RegisterControllerTest extends ApplicationTest {
         clickOn("#cancelBtn");
         AnchorPane logInScreen = lookup("#root").queryAs(AnchorPane.class);
         assertEquals(logInScreen.getId(), "root");
-        assertNull(DataManager.manager().getLoggedInUser());
+        assertNull(DataManagerLocal.manager().getLoggedInUser());
     }
 
 

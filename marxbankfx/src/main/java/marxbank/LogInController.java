@@ -54,7 +54,7 @@ public class LogInController {
             return;
         }
 
-        User u = DataManager.manager().getUserByUsername(username);
+        User u = DataManagerLocal.manager().getUserByUsername(username);
 
         if(u == null) {
             usernameError.setText("Username is wrong");
@@ -73,7 +73,7 @@ public class LogInController {
             return;
         }
 
-        DataManager.manager().setLoggedInUser(u);
+        DataManagerLocal.manager().setLoggedInUser(u);
 
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("Main.fxml"));

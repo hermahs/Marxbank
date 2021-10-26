@@ -56,9 +56,9 @@ public class ProfileControllerTest extends ApplicationTest{
     @BeforeEach
     private void beforeEach() throws IOException, InterruptedException {
         resetSingleton();
-        DataManager.manager().setPath(tempDir.toFile().getCanonicalPath());
-        user = DataManager.manager().createUser("username", "email@email.com", "password");
-        DataManager.manager().setLoggedInUser(user);
+        DataManagerLocal.manager().setPath(tempDir.toFile().getCanonicalPath());
+        user = DataManagerLocal.manager().createUser("username", "email@email.com", "password");
+        DataManagerLocal.manager().setLoggedInUser(user);
         Platform.runLater(new Runnable(){
             @Override public void run() {
                 controller.initData(user);
@@ -86,11 +86,11 @@ public class ProfileControllerTest extends ApplicationTest{
 
     @Test
     public void testSignOut() {
-        assertEquals(user, DataManager.manager().getLoggedInUser());
+        assertEquals(user, DataManagerLocal.manager().getLoggedInUser());
         clickOn("#signOutButton");
         AnchorPane logInScreen = lookup("#root").queryAs(AnchorPane.class);
         assertEquals(logInScreen.getId(), "root");
-        assertNull(DataManager.manager().getLoggedInUser());
+        assertNull(DataManagerLocal.manager().getLoggedInUser());
     }
 
     @Test
@@ -145,7 +145,7 @@ public class ProfileControllerTest extends ApplicationTest{
 
     private void resetSingleton() {
         Bank.getInstanceBank().clearAccounts();
-        DataManager.manager().resetData();
+        DataManagerLocal.manager().resetData();
     }
 
     public static void waitForRunLater() throws InterruptedException {

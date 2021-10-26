@@ -62,7 +62,7 @@ public class CreateNewAccountController {
             errorMsg.setText("Konto trenger et navn.");
             return;
         }
-        acc = DataManager.manager().createAccount(selectAccountType.getText(), user, accName);
+        acc = DataManagerLocal.manager().createAccount(selectAccountType.getText(), user, accName);
         if (acc==null) {
             errorMsg.setText("Ingen kontotype valgt.");
             return;
@@ -70,7 +70,7 @@ public class CreateNewAccountController {
         creationCompleteMsg.setText("Ny konto med kontonummer: " + acc.getAccountNumber() + " og navn: " + acc.getName() + " ble opprettet");
         creationCompleteMsg.setVisible(true);
         try {
-            DataManager.manager().save();
+            DataManagerLocal.manager().save();
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

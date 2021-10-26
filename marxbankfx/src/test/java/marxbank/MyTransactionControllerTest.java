@@ -54,7 +54,7 @@ public class MyTransactionControllerTest extends ApplicationTest{
     @BeforeEach
     private void beforeEach() throws IOException {
         resetSingleton();
-        DataManager.manager().setPath(tempDir.toFile().getCanonicalPath());
+        DataManagerLocal.manager().setPath(tempDir.toFile().getCanonicalPath());
         user = new User("username", "email@email.com", "password");
         a = new CheckingAccount(user, "test1");
         b = new CheckingAccount(user, "test2");

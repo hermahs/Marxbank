@@ -70,11 +70,11 @@ public class TransactionController {
             reciever = Bank.getInstanceBank().getAccount(Integer.parseInt(recieverText.getText()));
             amount = Integer.parseInt(amountText.getText());
             
-            t = DataManager.manager().createTransaction(from, reciever, amount);
+            t = DataManagerLocal.manager().createTransaction(from, reciever, amount);
             transactionFailedMsg.setVisible(false);
             transactionCompleteMsg.setVisible(true);
             try {
-                DataManager.manager().save();
+                DataManagerLocal.manager().save();
             } catch (Exception e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();

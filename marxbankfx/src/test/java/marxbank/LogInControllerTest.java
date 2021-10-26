@@ -36,9 +36,9 @@ public class LogInControllerTest extends ApplicationTest {
 
     @BeforeEach
     void setup() throws Exception {
-        DataManager.manager().resetData();
-        user = DataManager.manager().createUser("testUser", "test@emai.com", "password");
-        acc = DataManager.manager().createAccount("sparekonto", user, "s");
+        DataManagerLocal.manager().resetData();
+        user = DataManagerLocal.manager().createUser("testUser", "test@emai.com", "password");
+        acc = DataManagerLocal.manager().createAccount("sparekonto", user, "s");
     }
 
     @Test
@@ -100,7 +100,7 @@ public class LogInControllerTest extends ApplicationTest {
         clickOn("#typeUsername").write("testUser");
         clickOn("#typePassword").write("password");
         clickOn("#logInButton");
-        assertEquals(user, DataManager.manager().getLoggedInUser());
+        assertEquals(user, DataManagerLocal.manager().getLoggedInUser());
     }
 
     @Test

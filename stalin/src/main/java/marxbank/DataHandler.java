@@ -21,7 +21,7 @@ import marxbank.model.User;
 
 public class DataHandler {
 
-    public static boolean save(DataManager dm, String path) {
+    public static boolean save(DataManagerLocal dm, String path) {
         if(path == null || path == "") throw new IllegalArgumentException("Path cannot be null or empty");
         DataManagerWrapper d = new DataManagerWrapper(dm);
         File dataFile = new File(String.format("%s/data.json", path));
@@ -61,7 +61,7 @@ public class DataHandler {
         return true;
     }
 
-    public static boolean parse(DataManager dm, String path) {
+    public static boolean parse(DataManagerLocal dm, String path) {
         ObjectMapper objectMapper = new ObjectMapper();
         SimpleModule module = new SimpleModule();
         module.addDeserializer(User.class, new UserDeserializer(User.class));

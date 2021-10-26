@@ -20,9 +20,9 @@ public class App extends Application {
         scene = new Scene(loadFXML("LogIn"), 640, 480);
         stage.setScene(scene);
         stage.show();
-        DataManager.manager().setPath("../data");
+        DataManagerLocal.manager().setPath("../data");
         try {
-            DataManager.manager().parse();
+            DataManagerLocal.manager().parse();
         } catch (Exception e) {
             e.printStackTrace();
         }

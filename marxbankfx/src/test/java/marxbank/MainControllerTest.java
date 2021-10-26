@@ -52,7 +52,7 @@ public class MainControllerTest extends ApplicationTest {
     @BeforeEach
     private void beforeEach() throws IOException {
         resetSingleton();
-        DataManager.manager().setPath(tempDir.toFile().getCanonicalPath());
+        DataManagerLocal.manager().setPath(tempDir.toFile().getCanonicalPath());
         User user = new User("username", "email@email.com", "password");
         controller.initData(user);
     }

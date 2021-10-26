@@ -9,7 +9,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 
 import marxbank.AccountFactory;
-import marxbank.DataManager;
+import marxbank.DataManagerLocal;
 import marxbank.model.Account;
 import marxbank.model.User;
 import marxbank.util.AccountType;
@@ -30,8 +30,8 @@ public class AccountDeserializer extends StdDeserializer<Account> {
         JsonNode node = jp.getCodec().readTree(jp);
         AccountType type = AccountType.valueOf(node.get("type").asText());
 
-        if(!DataManager.manager().checkIfUserExists(node.get("user").get("id").asLong())) throw new IllegalStateException("user doesn't exist");
-        User owner = DataManager.manager().getUser(node.get("user").get("id").asLong());
+        if(!DataManagerLocal.manager().checkIfUserExists(node.get("user").get("id").asLong())) throw new IllegalStateException("user doesn't exist");
+        User owner = DataManagerLocal.manager().getUser(node.get("user").get("id").asLong());
 
         Account account = AccountFactory.createFrom(type.getTypeString(), node.get("id").asLong(), owner, node.get("name").asText(), node.get("accountNumber").asInt());
         if (account==null) {

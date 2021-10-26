@@ -49,7 +49,7 @@ public class ChangePasswordController {
         saveButton.setText("Oppdatert");
         controller.updatePassword();    
         try {
-            DataManager.manager().save();
+            DataManagerLocal.manager().save();
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

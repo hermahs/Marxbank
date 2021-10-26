@@ -53,7 +53,7 @@ public class MainController {
     }
 
     public void initData() throws IOException {
-        this.initData(DataManager.manager().getLoggedInUser());
+        this.initData(DataManagerLocal.manager().getLoggedInUser());
     }
 
     public void initData(User user) throws IOException {
