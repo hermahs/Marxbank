@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.Socket;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import marxbank.API.LogInRequest;
 import marxbank.API.SignUpRequest;
 import marxbank.model.Account;
@@ -39,12 +42,28 @@ public class DataManagerOnline {
         }
     }
 
-    public void loginPost(LogInRequest request) {
-        // logs you in and sets userId and userToken
+    public void loginPost(LogInRequest request) throws Exception {
+        // sjekke mot krypterte passord her etter eller annet sted
+        String requestString = String.format("{\"username\": \"%s\", \"password\":\"%s\"}", request.getUsername(), request.getPassword());
+        String result = UrlHandler.handlePost("/auth/login", requestString);
+        if (result == null) throw new Exception("Yeet yeet");
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        JsonNode node = objectMapper.readTree(result);
+
+        if (node.has("error")) throw new Exception("User does not exist");
+
+        this.userToken = node.get("token").asText();
+        this.userId = objectMapper.valueToTree(node.get("userResponse")).get("id").asLong();
+
+        System.out.println(this.userToken);
+        System.out.println(this.userId);
     }
 
     public void signup(SignUpRequest request) {
-        // runs signup and logs you in
+        // kryptere passord her et eller annet sted
+        String requestString = String.format("{\"username\": \"%s\", \"email\": \"%s\", \"password\": \"%s\"}", request.getUsername(), request.getEmail(), request.getPassword());
+        String result = UrlHandler.handlePost("/auth/signup", requestString);
     }
 
     public void logout() {
@@ -74,6 +93,13 @@ public class DataManagerOnline {
         // serialize transaction
         // say transfer from this account to that account
         // hippity hoppety this is now my property
+    }
+
+    public static void main(String... args) throws Exception {
+        LogInRequest yeet = new LogInRequest("yeet", "yeet");
+
+        DataManagerOnline.manager().loginPost(yeet);
+
     }
 
 }

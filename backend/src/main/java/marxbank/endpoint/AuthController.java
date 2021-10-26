@@ -18,7 +18,6 @@ import marxbank.API.LogInResponse;
 import marxbank.API.SignUpRequest;
 import marxbank.API.UserResponse;
 import marxbank.model.User;
-import marxbank.repository.TokenRepository;
 import marxbank.repository.UserRepository;
 import marxbank.service.AuthService;
 
@@ -27,20 +26,18 @@ import marxbank.service.AuthService;
 public class AuthController {
     
     private UserRepository userRepository;
-    private TokenRepository tokenRepository;
     private AuthService authService;
 
     @Autowired
-    public AuthController(UserRepository userRepository, TokenRepository tokenRepository, AuthService authService) {
+    public AuthController(UserRepository userRepository, AuthService authService) {
         this.userRepository = userRepository;
-        this.tokenRepository = tokenRepository;
         this.authService = authService;
     }
 
 
     @PostMapping("/login")
     @Transactional
-    public LogInResponse login(@RequestBody LogInRequest request) {
+    public ResponseEntity<LogInResponse> login(@RequestBody LogInRequest request) {
         String username = request.getUsername();
         String password = request.getPassword();
         
@@ -51,13 +48,13 @@ public class AuthController {
 
         String token = authService.createTokenForUser(user);
 
-        return new LogInResponse(token, new UserResponse(user));
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(new LogInResponse(token, new UserResponse(user)));
     }
 
     @GetMapping("/login")
     @Transactional
-    public UserResponse login(@RequestHeader(name = "Authorization", required = false) @Nullable String token) {
-        return new UserResponse(userRepository.findByToken(token).orElseThrow(IllegalArgumentException::new));
+    public ResponseEntity<UserResponse> login(@RequestHeader(name = "Authorization", required = false) @Nullable String token) {
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(new UserResponse(userRepository.findByToken(token).orElseThrow(IllegalArgumentException::new)));
     }
 
     @PostMapping("/signup")
@@ -74,8 +71,9 @@ public class AuthController {
     }
 
     @PostMapping("/logout")
-    public void logout(@RequestHeader(name = "Authorization", required = false) @Nullable String token) {
+    public ResponseEntity<Void> logout(@RequestHeader(name = "Authorization", required = false) @Nullable String token) {
         authService.removeToken(token);
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(null);
     }
 
 }

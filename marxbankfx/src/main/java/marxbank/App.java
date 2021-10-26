@@ -20,12 +20,17 @@ public class App extends Application {
         scene = new Scene(loadFXML("LogIn"), 640, 480);
         stage.setScene(scene);
         stage.show();
-        DataManagerLocal.manager().setPath("../data");
-        try {
-            DataManagerLocal.manager().parse();
-        } catch (Exception e) {
-            e.printStackTrace();
+        DataManagerLocal.manager().setLocal();
+        if(DataManagerLocal.manager().getLocal()) {
+            DataManagerLocal.manager().setPath("../data");
+            try {
+                DataManagerLocal.manager().parse();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
+
+        System.out.println(DataManagerLocal.manager().getLocal());
     }
 
     static void setRoot(String fxml) throws IOException {

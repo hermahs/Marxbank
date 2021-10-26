@@ -6,12 +6,13 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.stream.Collectors;
 
 public class UrlHandler {
     private final static String RESTURLSTRING = "http://localhost:8080";
     private static URL apiURL;
 
-    public static void handleGet(String path) {
+    public static String handleGet(String path) {
 
         String url = String.format("%s%s", RESTURLSTRING, path);
 
@@ -27,20 +28,19 @@ public class UrlHandler {
 
             BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 
-            String output;
-            while((output = br.readLine()) != null) {
-                System.out.println(output);
-            }
+            String output = br.lines().collect(Collectors.joining());
 
             connection.disconnect();
 
+            return output;
+
         } catch (IOException e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+            return null;
         }
     }
 
-    public static void handlePost(String path, String data) {
+    public static String handlePost(String path, String data) {
 
         String url = String.format("%s%s", RESTURLSTRING, path);
         try {
@@ -53,22 +53,22 @@ public class UrlHandler {
             os.write(data.getBytes());
             os.flush();
 
-            if (connection.getResponseCode() != HttpURLConnection.HTTP_CREATED) {
-                throw new RuntimeException("Failed with http code: " + connection.getResponseCode());
-            }
+            // if (connection.getResponseCode() != HttpURLConnection.HTTP_CREATED) {
+            //     throw new RuntimeException("Failed with http code: " + connection.getResponseCode());
+            // }
 
             BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 
-            String output;
-            while((output = br.readLine()) != null) {
-                System.out.println(output);
-            }
+            String output = br.lines().collect(Collectors.joining());
 
             connection.disconnect();
+
+            return output;
 
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
+            return null;
         }
     }
 

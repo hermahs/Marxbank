@@ -19,7 +19,7 @@ public class AccountResponse {
     private double balance;
     private double interestRate;
 
-    public AccountResponse(){
+    public AccountResponse() {
     
     }
 
