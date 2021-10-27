@@ -56,11 +56,11 @@ public class AuthController {
     @Transactional
     public ResponseEntity<UserResponse> login(@RequestHeader(name = "Authorization", required = false) @Nullable String token) {
         
-        if (!userRepository.findByToken(token).isPresent()) {
+        if (authService.getUserFromToken(token) == null) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }
 
-        return ResponseEntity.status(HttpStatus.OK).body(new UserResponse(userRepository.findByToken(token).get()));
+        return ResponseEntity.status(HttpStatus.OK).body(new UserResponse(userRepository.findByToken_Token(token).get()));
     }
 
     @PostMapping("/signup")
@@ -76,9 +76,9 @@ public class AuthController {
     }
 
     @PostMapping("/logout")
-    public ResponseEntity<Void> logout(@RequestHeader(name = "Authorization", required = false) @Nullable String token) {
+    public ResponseEntity<String> logout(@RequestHeader(name = "Authorization", required = false) @Nullable String token) {
         authService.removeToken(token);
-        return ResponseEntity.status(HttpStatus.OK).body(null);
+        return ResponseEntity.status(HttpStatus.OK).body("{\"signedOut\": \"true\"}");
     }
 
 }

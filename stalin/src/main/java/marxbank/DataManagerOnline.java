@@ -11,6 +11,7 @@ import marxbank.API.LogInRequest;
 import marxbank.API.SignUpRequest;
 import marxbank.model.Account;
 import marxbank.model.Transaction;
+import marxbank.util.AccountType;
 
 public class DataManagerOnline {
 
@@ -32,6 +33,14 @@ public class DataManagerOnline {
         }
 
         return dataInstance;
+    }
+
+    public String getUserToken() {
+        return this.userToken;
+    }
+
+    public Long getUserId() {
+        return this.userId;
     }
 
     public Boolean checkIfOnline() {
@@ -74,15 +83,31 @@ public class DataManagerOnline {
         // maybe return something here??
     }
 
-    public void logout() {
-        // sets userId to null
-        // sets token to null
+    public void logout() throws Exception {
+        if (!this.loggedIN) throw new Exception("Cannot log out if you're not logged in");
+        String requestString = "";
+        String result = UrlHandler.handlePostWithAuth("/auth/logout", requestString, this.userToken);
+
+        if (result == null) throw new Exception("logout error");
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        JsonNode node = objectMapper.readTree(result);
+
+        if (!node.get("signedOut").asBoolean()) throw new Exception("logout error");
+
+        this.userId = null;
+        this.userToken = null;
+        this.loggedIN = false;
     }
 
-    public void getAccounts() {
-        // gets accounts as json
-        // Deserialize into list
-        // return list
+    public void getAccounts() throws Exception {
+        if (!loggedIN) throw new Exception("Not logged in");
+        if (this.userToken == null) throw new Exception("userToken is null?!");
+        if (this.userId == null) throw new Exception("userId is null?!");
+
+        String result = UrlHandler.handleGetWithAuth("/accounts/myAccounts", this.userToken);
+        System.out.println(result);
+
     }
 
     public void getTransaction() {
@@ -91,10 +116,15 @@ public class DataManagerOnline {
         // return list
     }
 
-    public void createAccount(Account account) {
-        // Serialize account
-        // send account data to database
-        // return true or something if it works
+    public void createAccount(AccountType type, String name) throws Exception {
+        if (!loggedIN) throw new Exception("Not logged in");
+        if (this.userToken == null) throw new Exception("userToken is null?!");
+        if (this.userId == null) throw new Exception("userId is null?!");
+
+        String requestString = String.format("{\"accountType\":\"%s\", \"name\":\"%s\"}", type.toString(), name);
+        String response = UrlHandler.handlePostWithAuth("/accounts/createAccount", requestString, this.userToken);
+
+        System.out.println(response);
     }
 
     public void createTransaction(Transaction transaction) {
@@ -107,6 +137,17 @@ public class DataManagerOnline {
         LogInRequest yeet = new LogInRequest("yeet", "yeet");
 
         DataManagerOnline.manager().loginPost(yeet);
+        //System.out.println(DataManagerOnline.manager().getUserToken());
+
+        DataManagerOnline.manager().getAccounts();
+        
+        DataManagerOnline.manager().createAccount(AccountType.SAVING, "testAccount");
+
+        DataManagerOnline.manager().getAccounts();
+
+        DataManagerOnline.manager().logout();
+        //System.out.println(DataManagerOnline.manager().getUserToken());
+
 
     }
 
