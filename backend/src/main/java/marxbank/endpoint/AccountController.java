@@ -2,6 +2,7 @@ package marxbank.endpoint;
 
 import marxbank.API.AccountRequest;
 import marxbank.API.AccountResponse;
+import marxbank.API.AccountTransferRequest;
 import marxbank.model.Account;
 import marxbank.model.User;
 
@@ -16,6 +17,7 @@ import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -84,5 +86,17 @@ public class AccountController {
         accountRepository.save((Account) a);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(new AccountResponse(a));
+    }
+
+    @PutMapping("/updateAccount/{id}")
+    @Transactional
+    public ResponseEntity<AccountResponse> updateAccount(@PathVariable Long id, @RequestHeader(name = "Authorization", required = true) @Nullable String token, @RequestBody AccountRequest request) {
+        return ResponseEntity.status(HttpStatus.OK).body(null);
+    }
+
+    @PostMapping("/deposit/{id}")
+    @Transactional
+    public ResponseEntity<AccountResponse> depositIntoAccount(@PathVariable Long id, @RequestHeader(name = "Authorization", required = true) @Nullable String token, @RequestBody AccountTransferRequest request) {
+        return ResponseEntity.status(HttpStatus.OK).body(null);
     }
 }
