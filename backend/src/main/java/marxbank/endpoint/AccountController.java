@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import marxbank.repository.AccountRepository;
+import marxbank.repository.UserRepository;
 import marxbank.service.AccountService;
 import marxbank.service.AuthService;
 
@@ -35,12 +36,14 @@ public class AccountController {
     private final AccountRepository accountRepository;
     private final AccountService accountService;
     private final AuthService authService;
+    private final UserRepository userRepository;
 
     @Autowired
-    public AccountController(AccountRepository accountRepository, AccountService accountService, AuthService authService) {
+    public AccountController(AccountRepository accountRepository, AccountService accountService, AuthService authService, UserRepository userRepository) {
         this.accountRepository = accountRepository;
         this.accountService = accountService;
         this.authService = authService;
+        this.userRepository = userRepository;
     }
 
     @GetMapping

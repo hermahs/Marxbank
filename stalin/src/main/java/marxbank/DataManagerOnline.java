@@ -9,7 +9,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import marxbank.API.LogInRequest;
 import marxbank.API.SignUpRequest;
-import marxbank.model.Account;
 import marxbank.model.Transaction;
 import marxbank.util.AccountType;
 
@@ -46,6 +45,7 @@ public class DataManagerOnline {
     public Boolean checkIfOnline() {
         try {
             Socket s = new Socket(InetAddress.getLocalHost(), 8080);
+            s.close();
             return true;
         } catch (IOException e) {
             return false;
@@ -68,7 +68,7 @@ public class DataManagerOnline {
         this.loggedIN = true;
     }
 
-    public void signup(SignUpRequest request) throws Exception {
+    public void signUp(SignUpRequest request) throws Exception {
         // kryptere passord her et eller annet sted
         String requestString = String.format("{\"username\": \"%s\", \"email\": \"%s\", \"password\": \"%s\"}", request.getUsername(), request.getEmail(), request.getPassword());
         String result = UrlHandler.handlePost("/auth/signup", requestString);
@@ -134,6 +134,10 @@ public class DataManagerOnline {
     }
 
     public static void main(String... args) throws Exception {
+        // SignUpRequest ye = new SignUpRequest("yeet", "yeet", "yeet@yeet.com");
+
+        // DataManagerOnline.manager().signUp(ye);
+
         LogInRequest yeet = new LogInRequest("yeet", "yeet");
 
         DataManagerOnline.manager().loginPost(yeet);
@@ -141,9 +145,9 @@ public class DataManagerOnline {
 
         DataManagerOnline.manager().getAccounts();
         
-        DataManagerOnline.manager().createAccount(AccountType.SAVING, "testAccount");
+        //DataManagerOnline.manager().createAccount(AccountType.MARX, "MarxAccount");
 
-        DataManagerOnline.manager().getAccounts();
+        // DataManagerOnline.manager().getAccounts();
 
         DataManagerOnline.manager().logout();
         //System.out.println(DataManagerOnline.manager().getUserToken());

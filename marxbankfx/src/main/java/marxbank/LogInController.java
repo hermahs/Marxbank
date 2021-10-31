@@ -26,7 +26,6 @@ public class LogInController {
     @FXML private Pane newPane;
     @FXML private Parent root;
 
-
     public LogInController() {
         // DataManager.manager().setPath("../data");
         // try {
@@ -37,7 +36,7 @@ public class LogInController {
     }
 
     @FXML
-    private void handleLogInButton(MouseEvent e) throws IOException{
+    private void handleLogInButton(MouseEvent e) throws IOException {
 
         usernameError.setText("");
         passwordError.setText("");
@@ -54,28 +53,35 @@ public class LogInController {
             return;
         }
 
-        User u = DataManagerLocal.manager().getUserByUsername(username);
+        if (DataManagerLocal.manager().getLocal()) {
+            User u = DataManagerLocal.manager().getUserByUsername(username);
 
-        if(u == null) {
-            usernameError.setText("Username is wrong");
-            return;
+            if(u == null) {
+                usernameError.setText("Username is wrong");
+                return;
+            }
+    
+            String password = typePassword.getText();
+    
+            if(password == null || password.equals("") || password.trim().equals("")) {
+                passwordError.setText("Password cannot be empty");
+                return;
+            }
+    
+            if(!u.getPassword().equals(password)) {
+                passwordError.setText("Password is wrong");
+                return;
+            }
+    
+            DataManagerLocal.manager().setLoggedInUser(u);
+
+        } else {
+
         }
 
-        String password = typePassword.getText();
+        
 
-        if(password == null || password.equals("") || password.trim().equals("")) {
-            passwordError.setText("Password cannot be empty");
-            return;
-        }
-
-        if(!u.getPassword().equals(password)) {
-            passwordError.setText("Password is wrong");
-            return;
-        }
-
-        DataManagerLocal.manager().setLoggedInUser(u);
-
-        FXMLLoader loader = new FXMLLoader();
+        FXMLLoader loader = new FXMLLoader();   
         loader.setLocation(getClass().getResource("Main.fxml"));
         Parent tableViewParent = loader.load();
         

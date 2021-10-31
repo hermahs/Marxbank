@@ -99,6 +99,7 @@ public class UrlHandler {
             return output;
 
         } catch (IOException e) {
+            System.out.println("error");
             return null;
         }
     }

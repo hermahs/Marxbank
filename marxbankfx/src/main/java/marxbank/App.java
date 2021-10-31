@@ -20,7 +20,7 @@ public class App extends Application {
         scene = new Scene(loadFXML("LogIn"), 640, 480);
         stage.setScene(scene);
         stage.show();
-        DataManagerLocal.manager().setLocal();
+        DataManagerLocal.manager().setLocal(!DataManagerOnline.manager().checkIfOnline());
         if(DataManagerLocal.manager().getLocal()) {
             DataManagerLocal.manager().setPath("../data");
             try {

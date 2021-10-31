@@ -61,8 +61,8 @@ public class DataManagerLocal {
     /**
      * Checks if we are online or offline and sets local to true if offline and false if online
      */
-    public void setLocal() {
-        local = !DataManagerOnline.manager().checkIfOnline();
+    public void setLocal(boolean state) {
+        local = state;
     }
 
     /**
