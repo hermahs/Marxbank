@@ -28,7 +28,7 @@ public class User {
     @OneToOne(mappedBy = "user", cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
     private Token token;
 
-    protected User() {}
+    public User() {}
 
     /**
      * Constructor for user with arguments
