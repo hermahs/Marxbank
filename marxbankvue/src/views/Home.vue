@@ -28,6 +28,7 @@
           v-for="transaction in allTransactions.slice(0,1)" :key="transaction.amount" 
           class="transaction" />
       </div>
+     
 
     </main>
 
@@ -47,7 +48,7 @@
         <img class="image" src="https://img.huffingtonpost.com/asset/5bb675e7250000940039a5e0.jpeg?ops=scalefit_720_noupscale&format=webp" alt="">
         <div class="text-left text-gray-800 mt-2">
           <h2>Vil du vite hvor mye pensjon du kan </h2>
-          <h2>forvente å  ha? Eller ønsker du å spare </h2>
+          <h2>forvente å ha? Eller ønsker du å spare </h2>
           <h2>opp til egen bolig?</h2>
         </div>
         <router-link to="/calculator" > 
