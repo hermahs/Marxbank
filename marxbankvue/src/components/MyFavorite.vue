@@ -1,5 +1,5 @@
 <template>
-  <div class="layout">
+  <div class="layout" @click="$emit('accountSelected', id)">
     <main class="text-on-same-line text-black">
       <div>
         <p class="text-left font-medium">
@@ -17,7 +17,13 @@
 <script>
 export default {
   name: "MyFavorite",
-  props: ["accName", "balance", "accNumber"],
+  props: {
+    accName: String,
+    balance: Number,
+    accNumber: Number,
+    type: String,
+    id: Number,
+  }
 };
 </script>
 

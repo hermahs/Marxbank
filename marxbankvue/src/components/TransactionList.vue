@@ -36,12 +36,14 @@
 
 <script>
 import Transaction from "./Transaction.vue";
+import { mapGetters } from "vuex";
 
 export default {
   name: "TransactionList",
   components: {
     Transaction,
   },
+  
   props: {
     transactions: {
       type: Array,

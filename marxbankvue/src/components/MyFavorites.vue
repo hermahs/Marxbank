@@ -2,6 +2,7 @@
   <div>
     <MyFavorite
       v-for="account in allAccounts.slice(0, 3)"
+      :id="account.id"
       :key="account.id"
       :acc-number="account.accNumber"
       :balance="account.balance"
@@ -23,9 +24,8 @@ export default {
     MyFavorite,
   },
   methods: {
-    showAccount(accNumber) {
-      //TODO: bytt til konto view
-      console.log(accNumber);
+    showAccount(id) {
+      this.$router.push({ name: "AccountInfo", params: { id: id } });
     },
   },
 };
