@@ -22,7 +22,7 @@ import marxbank.model.User;
 public class DataHandler {
 
     public static boolean save(DataManager dm, String path) {
-        if(path == null || path == "") throw new IllegalArgumentException("Path cannot be null or empty");
+        if(path == null || path.equals("")) throw new IllegalArgumentException("Path cannot be null or empty");
         DataManagerWrapper d = new DataManagerWrapper(dm);
         File dataFile = new File(String.format("%s/data.json", path));
         if(!dataFile.exists()) {
@@ -36,18 +36,13 @@ public class DataHandler {
             }
         }
         FileWriter fw;
-        try {
-            fw = new FileWriter(dataFile);
-        } catch (IOException e1) {
-            // TODO legg til egne exceptions
-            return false;
-        }
         ObjectMapper objectMapper = new ObjectMapper();
         SimpleModule module = new SimpleModule();
         module.addSerializer(DataManagerWrapper.class, new DataManagerSerializer());
         objectMapper.registerModule(module);
 
         try {
+            fw = new FileWriter(dataFile);
             fw.write(objectMapper.writeValueAsString(d));
             fw.close();
         } catch (JsonProcessingException e) {

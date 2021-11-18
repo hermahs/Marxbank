@@ -160,15 +160,15 @@ public class DataManager {
     }
 
     public List<User> getUsers() {
-        return this.userList;
+        return List.copyOf(this.userList);
     }
 
     public List<Account> getAccounts() {
-        return this.accountList;
+        return List.copyOf(this.accountList);
     }
 
     public List<Transaction> getTransactions() {
-        return this.transactionList;
+        return List.copyOf(this.transactionList);
     }
 
     /**
