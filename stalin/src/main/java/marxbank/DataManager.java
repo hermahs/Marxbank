@@ -245,7 +245,7 @@ public class DataManager {
      * @return user that is logged in
      */
     public User getLoggedInUser() {
-        return this.loggedInUser;
+        return new User(this.loggedInUser.getId(), this.loggedInUser.getUsername(), this.loggedInUser.getEmail(), this.loggedInUser.getPassword());
     }
 
     /**
@@ -253,7 +253,7 @@ public class DataManager {
      * @param u to be logged in
      */
     public void setLoggedInUser(User u) {
-        this.loggedInUser = u;
+        this.loggedInUser = new User(u.getId(), u.getUsername(), u.getEmail(), u.getPassword());
     }
 
     /**

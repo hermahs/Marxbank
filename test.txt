@@ -1,0 +1,112 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------------------< marxbank:core >----------------------------
+[INFO] Building core 1.0-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-checkstyle-plugin:3.1.2:check (default-cli) @ core ---
+[WARNING] src\main\java\marxbank\model\Account.java:[48] (javadoc) RequireEmptyLineBeforeBlockTagGroup: Javadoc tag '@param' should be preceded with an empty line.
+[WARNING] src\main\java\marxbank\model\Account.java:[68] (javadoc) RequireEmptyLineBeforeBlockTagGroup: Javadoc tag '@param' should be preceded with an empty line.
+[WARNING] src\main\java\marxbank\model\Account.java:[92] (javadoc) RequireEmptyLineBeforeBlockTagGroup: Javadoc tag '@param' should be preceded with an empty line.
+[WARNING] src\main\java\marxbank\model\Account.java:[106] (javadoc) RequireEmptyLineBeforeBlockTagGroup: Javadoc tag '@return' should be preceded with an empty line.
+[WARNING] src\main\java\marxbank\model\Account.java:[116] (javadoc) RequireEmptyLineBeforeBlockTagGroup: Javadoc tag '@param' should be preceded with an empty line.
+[WARNING] src\main\java\marxbank\model\Account.java:[131] (javadoc) RequireEmptyLineBeforeBlockTagGroup: Javadoc tag '@return' should be preceded with an empty line.
+[WARNING] src\main\java\marxbank\model\Account.java:[141] (javadoc) RequireEmptyLineBeforeBlockTagGroup: Javadoc tag '@param' should be preceded with an empty line.
+[WARNING] src\main\java\marxbank\model\Account.java:[156] (javadoc) RequireEmptyLineBeforeBlockTagGroup: Javadoc tag '@param' should be preceded with an empty line.
+[WARNING] src\main\java\marxbank\model\Account.java:[174] (javadoc) RequireEmptyLineBeforeBlockTagGroup: Javadoc tag '@param' should be preceded with an empty line.
+[WARNING] src\main\java\marxbank\model\Account.java:[267,5] (blocks) NeedBraces: 'if' construct must use '{}'s.
+[WARNING] src\main\java\marxbank\model\Account.java:[269,5] (blocks) NeedBraces: 'if' construct must use '{}'s.
+[WARNING] src\main\java\marxbank\model\Account.java:[272,5] (blocks) NeedBraces: 'if' construct must use '{}'s.
+[WARNING] src\main\java\marxbank\model\Account.java:[274,5] (blocks) NeedBraces: 'if' construct must use '{}'s.
+[WARNING] src\main\java\marxbank\model\CheckingAccount.java:[5,1] (imports) CustomImportOrder: Extra separation in import group before 'javax.persistence.Entity'
+[WARNING] src\main\java\marxbank\model\CheckingAccount.java:[7,1] (imports) CustomImportOrder: Extra separation in import group before 'marxbank.Bank'
+[WARNING] src\main\java\marxbank\model\CreditAccount.java:[5,1] (imports) CustomImportOrder: Extra separation in import group before 'javax.persistence.Entity'
+[WARNING] src\main\java\marxbank\model\CreditAccount.java:[7,1] (imports) CustomImportOrder: Extra separation in import group before 'marxbank.Bank'
+[WARNING] src\main\java\marxbank\model\CreditAccount.java:[37,5] (blocks) NeedBraces: 'if' construct must use '{}'s.
+[WARNING] src\main\java\marxbank\model\CreditAccount.java:[39,5] (blocks) NeedBraces: 'if' construct must use '{}'s.
+[WARNING] src\main\java\marxbank\model\MarxAccount.java:[6,1] (imports) CustomImportOrder: Extra separation in import group before 'javax.persistence.Entity'
+[WARNING] src\main\java\marxbank\model\MarxAccount.java:[8,1] (imports) CustomImportOrder: Extra separation in import group before 'marxbank.Bank'
+[WARNING] src\main\java\marxbank\model\MarxAccount.java:[27] (javadoc) SummaryJavadoc: First sentence of Javadoc is missing an ending period.
+[WARNING] src\main\java\marxbank\model\MarxAccount.java:[30] (javadoc) RequireEmptyLineBeforeBlockTagGroup: Javadoc tag '@param' should be preceded with an empty line.
+[WARNING] src\main\java\marxbank\model\MarxAccount.java:[37] (javadoc) SummaryJavadoc: First sentence of Javadoc is missing an ending period.
+[WARNING] src\main\java\marxbank\model\MarxAccount.java:[40] (javadoc) RequireEmptyLineBeforeBlockTagGroup: Javadoc tag '@param' should be preceded with an empty line.
+[WARNING] src\main\java\marxbank\model\MarxAccount.java:[48] (javadoc) SummaryJavadoc: First sentence of Javadoc is missing an ending period.
+[WARNING] src\main\java\marxbank\model\MarxAccount.java:[51] (javadoc) RequireEmptyLineBeforeBlockTagGroup: Javadoc tag '@param' should be preceded with an empty line.
+[WARNING] src\main\java\marxbank\model\MarxAccount.java:[58] (javadoc) SummaryJavadoc: First sentence of Javadoc is missing an ending period.
+[WARNING] src\main\java\marxbank\model\MarxAccount.java:[61] (javadoc) RequireEmptyLineBeforeBlockTagGroup: Javadoc tag '@param' should be preceded with an empty line.
+[WARNING] src\main\java\marxbank\model\MarxAccount.java:[71] (javadoc) SummaryJavadoc: First sentence of Javadoc is missing an ending period.
+[WARNING] src\main\java\marxbank\model\SavingsAccount.java:[5,1] (imports) CustomImportOrder: Extra separation in import group before 'javax.persistence.Entity'
+[WARNING] src\main\java\marxbank\model\SavingsAccount.java:[7,1] (imports) CustomImportOrder: Extra separation in import group before 'marxbank.Bank'
+[WARNING] src\main\java\marxbank\model\SavingsAccount.java:[19] (javadoc) SummaryJavadoc: First sentence of Javadoc is missing an ending period.
+[WARNING] src\main\java\marxbank\model\SavingsAccount.java:[22] (javadoc) RequireEmptyLineBeforeBlockTagGroup: Javadoc tag '@param' should be preceded with an empty line.
+[WARNING] src\main\java\marxbank\model\SavingsAccount.java:[30] (javadoc) SummaryJavadoc: First sentence of Javadoc is missing an ending period.
+[WARNING] src\main\java\marxbank\model\SavingsAccount.java:[33] (javadoc) RequireEmptyLineBeforeBlockTagGroup: Javadoc tag '@param' should be preceded with an empty line.
+[WARNING] src\main\java\marxbank\model\SavingsAccount.java:[40] (javadoc) SummaryJavadoc: First sentence of Javadoc is missing an ending period.
+[WARNING] src\main\java\marxbank\model\SavingsAccount.java:[43] (javadoc) RequireEmptyLineBeforeBlockTagGroup: Javadoc tag '@param' should be preceded with an empty line.
+[WARNING] src\main\java\marxbank\model\SavingsAccount.java:[50] (javadoc) SummaryJavadoc: First sentence of Javadoc is missing an ending period.
+[WARNING] src\main\java\marxbank\model\SavingsAccount.java:[53] (javadoc) RequireEmptyLineBeforeBlockTagGroup: Javadoc tag '@param' should be preceded with an empty line.
+[WARNING] src\main\java\marxbank\model\Token.java:[5,1] (imports) CustomImportOrder: Extra separation in import group before 'javax.persistence.Column'
+[WARNING] src\main\java\marxbank\model\Token.java:[59,5] (blocks) NeedBraces: 'if' construct must use '{}'s.
+[WARNING] src\main\java\marxbank\model\Token.java:[61,5] (blocks) NeedBraces: 'if' construct must use '{}'s.
+[WARNING] src\main\java\marxbank\model\Transaction.java:[9,1] (imports) CustomImportOrder: Extra separation in import group before 'javax.persistence.Column'
+[WARNING] src\main\java\marxbank\model\Transaction.java:[41,16] (modifier) ModifierOrder: 'static' modifier out of order with the JLS suggestions.
+[WARNING] src\main\java\marxbank\model\Transaction.java:[51] (javadoc) RequireEmptyLineBeforeBlockTagGroup: Javadoc tag '@param' should be preceded with an empty line.
+[WARNING] src\main\java\marxbank\model\Transaction.java:[56,6] (javadoc) JavadocMethod: Unused @param tag for 'dm'.
+[WARNING] src\main\java\marxbank\model\Transaction.java:[73,5] (blocks) NeedBraces: 'if' construct must use '{}'s.
+[WARNING] src\main\java\marxbank\model\Transaction.java:[81] (javadoc) SummaryJavadoc: First sentence of Javadoc is missing an ending period.
+[WARNING] src\main\java\marxbank\model\Transaction.java:[85] (javadoc) RequireEmptyLineBeforeBlockTagGroup: Javadoc tag '@param' should be preceded with an empty line.
+[WARNING] src\main\java\marxbank\model\Transaction.java:[89,6] (javadoc) JavadocMethod: Unused @param tag for 'dm'.
+[WARNING] src\main\java\marxbank\model\Transaction.java:[98] (javadoc) SummaryJavadoc: First sentence of Javadoc is missing an ending period.
+[WARNING] src\main\java\marxbank\model\Transaction.java:[102] (javadoc) RequireEmptyLineBeforeBlockTagGroup: Javadoc tag '@param' should be preceded with an empty line.
+[WARNING] src\main\java\marxbank\model\Transaction.java:[106,6] (javadoc) JavadocMethod: Unused @param tag for 'dm'.
+[WARNING] src\main\java\marxbank\model\Transaction.java:[113] (javadoc) SummaryJavadoc: First sentence of Javadoc is missing an ending period.
+[WARNING] src\main\java\marxbank\model\Transaction.java:[118] (javadoc) RequireEmptyLineBeforeBlockTagGroup: Javadoc tag '@param' should be preceded with an empty line.
+[WARNING] src\main\java\marxbank\model\Transaction.java:[134] (javadoc) SummaryJavadoc: First sentence of Javadoc is missing an ending period.
+[WARNING] src\main\java\marxbank\model\Transaction.java:[137] (javadoc) RequireEmptyLineBeforeBlockTagGroup: Javadoc tag '@return' should be preceded with an empty line.
+[WARNING] src\main\java\marxbank\model\Transaction.java:[151] (javadoc) RequireEmptyLineBeforeBlockTagGroup: Javadoc tag '@return' should be preceded with an empty line.
+[WARNING] src\main\java\marxbank\model\Transaction.java:[161] (javadoc) RequireEmptyLineBeforeBlockTagGroup: Javadoc tag '@return' should be preceded with an empty line.
+[WARNING] src\main\java\marxbank\model\Transaction.java:[167] (javadoc) SummaryJavadoc: First sentence of Javadoc is missing an ending period.
+[WARNING] src\main\java\marxbank\model\Transaction.java:[170] (javadoc) RequireEmptyLineBeforeBlockTagGroup: Javadoc tag '@return' should be preceded with an empty line.
+[WARNING] src\main\java\marxbank\model\Transaction.java:[180] (javadoc) SummaryJavadoc: First sentence of Javadoc is missing an ending period.
+[WARNING] src\main\java\marxbank\model\Transaction.java:[183] (javadoc) RequireEmptyLineBeforeBlockTagGroup: Javadoc tag '@return' should be preceded with an empty line.
+[WARNING] src\main\java\marxbank\model\Transaction.java:[193] (javadoc) SummaryJavadoc: First sentence of Javadoc is missing an ending period.
+[WARNING] src\main\java\marxbank\model\Transaction.java:[196] (javadoc) RequireEmptyLineBeforeBlockTagGroup: Javadoc tag '@return' should be preceded with an empty line.
+[WARNING] src\main\java\marxbank\model\Transaction.java:[206] (javadoc) SummaryJavadoc: First sentence of Javadoc is missing an ending period.
+[WARNING] src\main\java\marxbank\model\Transaction.java:[209] (javadoc) RequireEmptyLineBeforeBlockTagGroup: Javadoc tag '@return' should be preceded with an empty line.
+[WARNING] src\main\java\marxbank\model\Transaction.java:[218] (javadoc) RequireEmptyLineBeforeBlockTagGroup: Javadoc tag '@param' should be preceded with an empty line.
+[WARNING] src\main\java\marxbank\model\Transaction.java:[222] (javadoc) NonEmptyAtclauseDescription: At-clause should have a non-empty description.
+[WARNING] src\main\java\marxbank\model\Transaction.java:[225,5] (blocks) NeedBraces: 'if' construct must use '{}'s.
+[WARNING] src\main\java\marxbank\model\Transaction.java:[234] (javadoc) RequireEmptyLineBeforeBlockTagGroup: Javadoc tag '@throws' should be preceded with an empty line.
+[WARNING] src\main\java\marxbank\model\Transaction.java:[251] (javadoc) SummaryJavadoc: First sentence of Javadoc is missing an ending period.
+[WARNING] src\main\java\marxbank\model\Transaction.java:[254] (javadoc) RequireEmptyLineBeforeBlockTagGroup: Javadoc tag '@param' should be preceded with an empty line.
+[WARNING] src\main\java\marxbank\model\Transaction.java:[271] (javadoc) RequireEmptyLineBeforeBlockTagGroup: Javadoc tag '@param' should be preceded with an empty line.
+[WARNING] src\main\java\marxbank\model\Transaction.java:[288,5] (blocks) NeedBraces: 'if' construct must use '{}'s.
+[WARNING] src\main\java\marxbank\model\Transaction.java:[290,5] (blocks) NeedBraces: 'if' construct must use '{}'s.
+[WARNING] src\main\java\marxbank\model\User.java:[8,1] (imports) CustomImportOrder: Extra separation in import group before 'javax.persistence.CascadeType'
+[WARNING] src\main\java\marxbank\model\User.java:[34] (javadoc) SummaryJavadoc: First sentence of Javadoc is missing an ending period.
+[WARNING] src\main\java\marxbank\model\User.java:[37] (javadoc) RequireEmptyLineBeforeBlockTagGroup: Javadoc tag '@param' should be preceded with an empty line.
+[WARNING] src\main\java\marxbank\model\User.java:[60,5] (blocks) NeedBraces: 'if' construct must use '{}'s.
+[WARNING] src\main\java\marxbank\model\User.java:[128,5] (blocks) NeedBraces: 'if' construct must use '{}'s.
+[WARNING] src\main\java\marxbank\model\User.java:[130,5] (blocks) NeedBraces: 'if' construct must use '{}'s.
+[WARNING] src\main\java\marxbank\model\User.java:[132,5] (blocks) NeedBraces: 'if' construct must use '{}'s.
+[WARNING] src\main\java\marxbank\model\User.java:[134,5] (blocks) NeedBraces: 'if' construct must use '{}'s.
+[WARNING] src\main\java\marxbank\model\User.java:[141,5] (blocks) NeedBraces: 'if' construct must use '{}'s.
+[WARNING] src\main\java\marxbank\model\User.java:[143,5] (blocks) NeedBraces: 'if' construct must use '{}'s.
+[WARNING] src\main\java\marxbank\model\User.java:[145,5] (blocks) NeedBraces: 'if' construct must use '{}'s.
+[WARNING] src\main\java\marxbank\model\User.java:[147,5] (blocks) NeedBraces: 'if' construct must use '{}'s.
+[WARNING] src\main\java\marxbank\model\User.java:[154,5] (blocks) NeedBraces: 'if' construct must use '{}'s.
+[WARNING] src\main\java\marxbank\model\User.java:[155] (sizes) LineLength: Line is longer than 100 characters (found 104).
+[WARNING] src\main\java\marxbank\model\User.java:[162] (sizes) LineLength: Line is longer than 100 characters (found 104).
+[WARNING] src\main\java\marxbank\model\User.java:[166,5] (blocks) NeedBraces: 'if' construct must use '{}'s.
+[WARNING] src\main\java\marxbank\model\User.java:[183,5] (blocks) NeedBraces: 'if' construct must use '{}'s.
+[WARNING] src\main\java\marxbank\model\User.java:[185,5] (blocks) NeedBraces: 'if' construct must use '{}'s.
+[WARNING] src\main\java\marxbank\util\ValidPath.java:[7] (javadoc) SummaryJavadoc: First sentence of Javadoc is missing an ending period.
+[WARNING] src\main\java\marxbank\util\ValidPath.java:[10] (javadoc) RequireEmptyLineBeforeBlockTagGroup: Javadoc tag '@param' should be preceded with an empty line.
+[WARNING] checkstyle:check violations detected but failOnViolation set to false
+[INFO] You have 97 Checkstyle violations.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.458 s
+[INFO] Finished at: 2021-11-19T15:10:50+01:00
+[INFO] ------------------------------------------------------------------------

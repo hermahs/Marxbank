@@ -3,6 +3,7 @@ package marxbank;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -42,7 +43,7 @@ public class DataHandler {
         objectMapper.registerModule(module);
 
         try {
-            fw = new FileWriter(dataFile);
+            fw = new FileWriter(dataFile, Charset.defaultCharset());
             fw.write(objectMapper.writeValueAsString(d));
             fw.close();
         } catch (JsonProcessingException e) {
@@ -64,10 +65,6 @@ public class DataHandler {
         module.addDeserializer(Transaction.class, new TransactionDeserializer(Transaction.class));
         objectMapper.registerModule(module);
 
-        ArrayList<User> uList = new ArrayList<User>();
-        ArrayList<Account> aList = new ArrayList<Account>();
-        ArrayList<Transaction> tList = new ArrayList<Transaction>();
-
         File dataFile = new File(String.format("%s/data.json", path));
 
         if(!dataFile.exists()) return false;
@@ -87,7 +84,6 @@ public class DataHandler {
             User u;
             try {
                 u = objectMapper.treeToValue(n, User.class);
-                uList.add(u);
                 // check if user with id exists
                 if(!dm.checkIfUserExists(u.getId())) {
                     dm.addUser(u);
@@ -108,7 +104,6 @@ public class DataHandler {
         for(JsonNode a : node) {
             try {
                 Account acc = objectMapper.treeToValue(a, Account.class);
-                aList.add(acc);
                 if(!dm.checkIfAccountExists(acc.getId())) {
                     dm.addAccount(acc);
                     continue;
@@ -129,7 +124,6 @@ public class DataHandler {
         for(JsonNode t : node) {
             try {
                 Transaction transaction = objectMapper.treeToValue(t, Transaction.class);
-                tList.add(transaction);
                 if(!dm.checkIfTransactionExists(transaction.getId())) {
                     dm.addTransaction(transaction);
                     continue;

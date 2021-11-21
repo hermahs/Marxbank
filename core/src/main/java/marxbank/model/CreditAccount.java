@@ -10,53 +10,55 @@ import marxbank.util.AccountType;
 @Entity
 public class CreditAccount extends Account {
 
-    private double credtiLimit;
-    private static double DEFAULT_CREDIT_LIMIT = 200;
-    
-    public CreditAccount() {
-        super();
-    }
+  private double credtiLimit;
+  private static double DEFAULT_CREDIT_LIMIT = 200;
 
-    public CreditAccount(User user, String name) {
-        super(user, 0, AccountType.CREDIT, name);
-        this.credtiLimit = DEFAULT_CREDIT_LIMIT;
-    }
+  public CreditAccount() {
+    super();
+  }
 
-    public CreditAccount(Long id, User user, double interestRate, String name, int accountNumber) {
-        super(id, user, interestRate, AccountType.CREDIT, accountNumber, name);
-        this.credtiLimit = DEFAULT_CREDIT_LIMIT;
-    }
+  public CreditAccount(User user, String name) {
+    super(user, 0, AccountType.CREDIT, name);
+    this.credtiLimit = DEFAULT_CREDIT_LIMIT;
+  }
 
-    @Override
-    public double getCreditLimit() {
-        return this.credtiLimit;
-    }
+  public CreditAccount(Long id, User user, double interestRate, String name, int accountNumber) {
+    super(id, user, interestRate, AccountType.CREDIT, accountNumber, name);
+    this.credtiLimit = DEFAULT_CREDIT_LIMIT;
+  }
 
-    @Override
-    public void withdraw(double amount) {
-        if (amount <= 0) throw new IllegalArgumentException("Withdraw must be positive");
-        if ((this.getBalance() + this.credtiLimit) - amount < 0) throw new IllegalStateException("Not enough balance on account");
-        
-        this.setBalance(this.getBalance() - amount);
-    }
+  @Override
+  public double getCreditLimit() {
+    return this.credtiLimit;
+  }
 
+  @Override
+  public void withdraw(double amount) {
+    if (amount <= 0)
+      throw new IllegalArgumentException("Withdraw must be positive");
+    if ((this.getBalance() + this.credtiLimit) - amount < 0)
+      throw new IllegalStateException("Not enough balance on account");
 
-    @Override
-    public int generateAccountNumber() {
-        String accNumberString = "69";
-        for (int i = 0; i < 3; i++) {
-            accNumberString = accNumberString.concat(String.valueOf(ThreadLocalRandom.current().nextInt(10)));
-        }
-        int accNumber = Integer.parseInt(accNumberString);
-        if (Bank.getInstanceBank().getAccounts().containsKey(accNumber)) {
-            generateAccountNumber();
-        }
-        return accNumber;
-    }
+    this.setBalance(this.getBalance() - amount);
+  }
 
-    @Override
-    public String getAccountType() {
-        return "Kredittkonto";
+  @Override
+  public int generateAccountNumber() {
+    String accNumberString = "69";
+    for (int i = 0; i < 3; i++) {
+      accNumberString =
+          accNumberString.concat(String.valueOf(ThreadLocalRandom.current().nextInt(10)));
     }
-    
+    int accNumber = Integer.parseInt(accNumberString);
+    if (Bank.getInstanceBank().getAccounts().containsKey(accNumber)) {
+      generateAccountNumber();
+    }
+    return accNumber;
+  }
+
+  @Override
+  public String getAccountType() {
+    return "Kredittkonto";
+  }
+
 }
