@@ -1,27 +1,33 @@
-# Stalin
-Stalin er vårt modul som styrer alt som har med lokallagring og datahåndtering (før vi implementerer RestAPI'en vår) i appen. Den hovedsaklig av en klasse, `DataManager` som styrer alt som har med data å gjøre. Vi designet den på en slik måte at den er tilgjengelig fra overalt gjennom å kalle:
+# Storage
+
+Storage er vårt modul som styrer alt som har med lokallagring og datahåndtering (før vi implementerer RestAPI'en vår) i appen. Den hovedsaklig av en klasse, `DataManager` som styrer alt som har med data å gjøre. Vi designet den på en slik måte at den er tilgjengelig fra overalt gjennom å kalle:
+
 ```java
 DataManager.manager()
 ```
+
 Dette lar oss lett sende og hente data til og fra vår lokale database. Vi lagrer dataen vår i en egen fil kalt data.json med en slik struktur som vist under.
 
 ## Installasjon og testing
 
 ### Installasjon
+
 For å installere JSON kjører du `mvn install -DskipTests`
 
-### Testing av Stalin
+### Testing av Storaga
+
 Testene er skrevet i Junit5 som er et rammeverk for testing av Java
-For å teste JSON kjører du `mvn test -pl stalin`
+For å teste JSON kjører du `mvn test`
 
 ### Testdekningsgrad med JaCoCo
+
 For testdekningsgraden til Core bruker vi JaCoCo.
-For å finne ut testdekningsgraden kjører du `mvn clean jacoco:prepare-agent test jacoco:report` også finner du rapport filen som heter `index.html` under `stalin/target/site`.
+For å finne ut testdekningsgraden kjører du `mvn clean jacoco:prepare-agent test jacoco:report` også finner du rapport filen som heter `index.html` under `storage/target/site`.
 Du kan også finne Testdekningsgrad på hovedsiden av Readme.
 
-## Struktur av Stalin
+## Struktur av Storage
 
-Hele modulen er bygd rundt det å kunne lagre data lokalt til en json fil og lese data tilbake fra den json filen. Dette skjer gjennom bruk av flere Serializere og Deserializere som serialiserer og deserialserer dataen vår. Alle er egendefinerte og omhandler klasser fra Core. Under ser du hvordan funksjonskallet lagringen skjer i Stalin.
+Hele modulen er bygd rundt det å kunne lagre data lokalt til en json fil og lese data tilbake fra den json filen. Dette skjer gjennom bruk av flere Serializere og Deserializere som serialiserer og deserialserer dataen vår. Alle er egendefinerte og omhandler klasser fra Core. Under ser du hvordan funksjonskallet lagringen skjer i Storage.
 
 ![Lagrings kall](../diagrammer/stalinSerializeDiagram.svg)
 
@@ -33,7 +39,7 @@ Hele modulen er bygd rundt det å kunne lagre data lokalt til en json fil og les
 
 ### Forklaring
 
-For lagring lokalt av dataen til brukeren, kontoer og overføringer blir lagret i en json struktur. Strukturen til dataen er slik som vist i diagrammet under. 
+For lagring lokalt av dataen til brukeren, kontoer og overføringer blir lagret i en json struktur. Strukturen til dataen er slik som vist i diagrammet under.
 
 Objektene lagres i en array som kalles da `users` for brukere, `accounts` for kontoer og `transactions` for overføringer.
 

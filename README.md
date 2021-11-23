@@ -18,7 +18,7 @@ Dette er en app utviklet i emnet IT1901 høsten 2021. Gruppen består av 4 stude
 
 ### Kodingsprosjektet
 
-Kodingsprosjektet består av fem moduler: core, backend, stalin, marxbankfx og marxbankvue. Se egne readmes i disse mappene for mer detaljer om hva de består av.
+Kodingsprosjektet består av fem moduler: Core, Backend, Storage, Marxbankfx og Marxbankvue. Se egne readmes i disse mappene for mer detaljer om hva de består av.
 
 # Hvordan kjøre appen
 
@@ -50,7 +50,7 @@ Finn ` index.html ` under target/site (alle modulene har en egen target-mappe. V
 
 ## JSON datastruktur
 
-For å se hvordan vi lagrer dataen vår lokalt med json, se [Readme i stalin](stalin/Readme.md#lagring-i-Json)
+For å se hvordan vi lagrer dataen vår lokalt med json, se [Readme i Storage](storage/Readme.md#lagring-i-Json)
 
 
 
