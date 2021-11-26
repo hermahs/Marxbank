@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import marxbank.API.TransactionRequest;
 import marxbank.API.TransactionResponse;
-import marxbank.model.Account;
-import marxbank.model.Transaction;
+import marxbank.core.model.Account;
+import marxbank.core.model.Transaction;
 import marxbank.repository.AccountRepository;
 import marxbank.repository.TransactionRepository;
 

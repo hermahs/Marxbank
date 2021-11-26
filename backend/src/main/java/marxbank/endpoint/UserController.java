@@ -3,7 +3,8 @@ package marxbank.endpoint;
 import javax.transaction.Transactional;
 import marxbank.API.EditUserRequest;
 import marxbank.API.UserResponse;
-import marxbank.model.User;
+import marxbank.core.model.User;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

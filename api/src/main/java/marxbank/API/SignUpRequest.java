@@ -1,6 +1,6 @@
 package marxbank.API;
 
-import marxbank.model.User;
+import marxbank.core.model.User;
 
 /**
  * Klassen holder på informasjon en bruker må gi for å opprette en ny profil hos banken.

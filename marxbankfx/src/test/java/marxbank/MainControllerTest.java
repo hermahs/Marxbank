@@ -21,7 +21,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import marxbank.model.User;
+import marxbank.core.model.User;
+import marxbank.marxbankfx.MainController;
+import marxbank.storage.DataManager;
 
 public class MainControllerTest extends ApplicationTest {
 

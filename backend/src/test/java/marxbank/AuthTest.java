@@ -18,8 +18,8 @@ import org.springframework.web.server.ResponseStatusException;
 
 import marxbank.API.LogInRequest;
 import marxbank.API.SignUpRequest;
+import marxbank.core.model.User;
 import marxbank.endpoint.AuthController;
-import marxbank.model.User;
 import marxbank.repository.UserRepository;
 import marxbank.service.AuthService;
 

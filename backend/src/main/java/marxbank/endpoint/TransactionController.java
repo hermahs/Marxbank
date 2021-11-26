@@ -20,10 +20,10 @@ import org.springframework.web.server.ResponseStatusException;
 
 import marxbank.API.TransactionRequest;
 import marxbank.API.TransactionResponse;
-import marxbank.model.Account;
+import marxbank.core.model.Account;
+import marxbank.core.model.User;
 import marxbank.repository.AccountRepository;
 import marxbank.repository.TransactionRepository;
-import marxbank.model.User;
 import marxbank.service.AccountService;
 import marxbank.service.AuthService;
 import marxbank.service.TransactionService;

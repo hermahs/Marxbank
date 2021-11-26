@@ -1,6 +1,6 @@
 package marxbank.API;
 
-import marxbank.model.Transaction;
+import marxbank.core.model.Transaction;
 
 /**
  * Klassen inneholder informasjonen brukeren må få tilbake i forbindelse med å gjennomføre en transaksjon.

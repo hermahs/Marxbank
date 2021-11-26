@@ -106,13 +106,23 @@
                 <groupId>org.openjfx</groupId>
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.6</version>
+                <configuration>
+                    <compress>2</compress>
+                    <noHeaderFiles>true</noHeaderFiles>
+                    <stripDebug>true</stripDebug>
+                    <noManPages>true</noManPages>
+                    <launcher>marxbankfx</launcher>
+                    <mainClass>marxbankfx/marxbank.marxbankfx.App</mainClass>
+                    <jlinkImageName>marxbankfx</jlinkImageName>
+                    <jlinkZipName>marxbankfx</jlinkZipName>
+                </configuration>
                 <executions>
                     <execution>
                         <!-- Default configuration for running -->
                         <!-- Usage: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>marxbank.App</mainClass>
+                            <mainClass>marxbank.marxbankfx.App</mainClass>
                         </configuration>
                     </execution>
                 </executions>
@@ -131,6 +141,28 @@
             <plugin>
                 <artifactId>maven-checkstyle-plugin</artifactId>
             </plugin>
+            <plugin>
+                <groupId>org.panteleyev</groupId>
+                <artifactId>jpackage-maven-plugin</artifactId>
+                <version>1.4.0</version>
+                <configuration>
+                    <name>marxbankFX</name>
+                    <type>MSI</type>
+                    <appVersion>1.0.0</appVersion>
+                    <vendor>com.acme</vendor>
+                    <destination>target/dist</destination>
+                    <module>marxbank.marxbankfx/marxbank.marxbankfx.App</module>
+                    <runtimeImage>target/marxbankfx</runtimeImage>
+                    <javaOptions>
+                        <option>-Dfile.encoding=UTF-8</option>
+                    </javaOptions>
+                    <winDirChooser>true</winDirChooser>
+                    <winShortcut>true</winShortcut>
+                    <winMenu>true</winMenu>
+                    <winMenuGroup>marxbankFX</winMenuGroup>
+
+                </configuration>
+              </plugin>
         </plugins>
     </build>
 </project>

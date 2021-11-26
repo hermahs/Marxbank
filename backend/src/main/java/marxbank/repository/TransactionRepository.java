@@ -2,8 +2,10 @@ package marxbank.repository;
 
 import java.util.List;
 import java.util.Optional;
-import marxbank.model.Transaction;
+
 import org.springframework.data.repository.CrudRepository;
+
+import marxbank.core.model.Transaction;
 
 public interface TransactionRepository extends CrudRepository<Transaction, Long> {
 

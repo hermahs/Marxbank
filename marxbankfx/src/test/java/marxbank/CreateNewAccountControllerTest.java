@@ -21,10 +21,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.input.MouseButton;
 import javafx.stage.Stage;
-import marxbank.model.Account;
-import marxbank.model.SavingsAccount;
-import marxbank.model.Transaction;
-import marxbank.model.User;
+import marxbank.core.model.Account;
+import marxbank.core.model.SavingsAccount;
+import marxbank.core.model.Transaction;
+import marxbank.core.model.User;
+import marxbank.marxbankfx.CreateNewAccountController;
+import marxbank.storage.DataManager;
 
 public class CreateNewAccountControllerTest extends ApplicationTest {
   private CreateNewAccountController controller;

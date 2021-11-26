@@ -26,7 +26,9 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import marxbank.model.User;
+import marxbank.core.model.User;
+import marxbank.marxbankfx.ProfileController;
+import marxbank.storage.DataManager;
 
 public class ProfileControllerTest extends ApplicationTest {
   private ProfileController controller;

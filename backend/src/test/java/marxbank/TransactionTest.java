@@ -29,7 +29,7 @@ import marxbank.API.TransactionResponse;
 import marxbank.endpoint.AccountController;
 import marxbank.endpoint.AuthController;
 import marxbank.endpoint.TransactionController;
-import marxbank.util.AccountType;
+import marxbank.core.util.AccountType;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @DirtiesContext(classMode = ClassMode.BEFORE_EACH_TEST_METHOD)

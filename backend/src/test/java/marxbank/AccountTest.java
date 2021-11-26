@@ -28,7 +28,7 @@ import marxbank.API.SignUpRequest;
 import marxbank.endpoint.AccountController;
 import marxbank.endpoint.AuthController;
 import marxbank.service.AccountService;
-import marxbank.util.AccountType;
+import marxbank.core.util.AccountType;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @DirtiesContext(classMode = ClassMode.BEFORE_EACH_TEST_METHOD)

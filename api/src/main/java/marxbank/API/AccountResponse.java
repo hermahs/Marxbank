@@ -1,7 +1,7 @@
 package marxbank.API;
 
-import marxbank.model.Account;
-import marxbank.util.AccountType;
+import marxbank.core.model.Account;
+import marxbank.core.util.AccountType;
 
 /**
  * En klasse som inneholder elementene i en konto som må vises til brukeren i brukergrensesnittet.

@@ -4,9 +4,10 @@ import marxbank.API.AccountRequest;
 import marxbank.API.AccountResponse;
 import marxbank.API.DepositWithdrawRequest;
 import marxbank.API.PublicAccountResponse;
-import marxbank.model.Account;
-import marxbank.model.Transaction;
-import marxbank.model.User;
+import marxbank.core.model.Account;
+import marxbank.core.model.Transaction;
+import marxbank.core.model.User;
+
 import java.util.ArrayList;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
 package marxbank.API;
 
-import marxbank.model.User;
+import marxbank.core.model.User;
 
 
 /**

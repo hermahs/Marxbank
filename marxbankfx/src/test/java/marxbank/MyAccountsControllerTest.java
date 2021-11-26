@@ -22,10 +22,12 @@ import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import marxbank.model.Account;
-import marxbank.model.SavingsAccount;
-import marxbank.model.Transaction;
-import marxbank.model.User;
+import marxbank.core.model.Account;
+import marxbank.core.model.SavingsAccount;
+import marxbank.core.model.Transaction;
+import marxbank.core.model.User;
+import marxbank.marxbankfx.MyAccountsController;
+import marxbank.storage.DataManager;
 
 public class MyAccountsControllerTest extends ApplicationTest {
 

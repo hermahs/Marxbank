@@ -1,7 +1,7 @@
 package marxbank.API;
 
-import marxbank.model.Account;
-import marxbank.util.AccountType;
+import marxbank.core.model.Account;
+import marxbank.core.util.AccountType;
 
 /**
  * Klassen fungerer som en alternativ account-response som gjemmer sensitiv informasjon, f.eks. saldo and interestRate. 

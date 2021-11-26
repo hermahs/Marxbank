@@ -17,9 +17,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import marxbank.model.Account;
-import marxbank.model.CheckingAccount;
-import marxbank.model.User;
+import marxbank.core.model.Account;
+import marxbank.core.model.CheckingAccount;
+import marxbank.core.model.User;
+import marxbank.marxbankfx.TransactionController;
+import marxbank.storage.DataManager;
 import javafx.scene.control.Label;
 
 public class MyTransactionControllerTest extends ApplicationTest {

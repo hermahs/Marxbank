@@ -8,11 +8,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import marxbank.model.Account;
-import marxbank.model.CheckingAccount;
-import marxbank.model.MarxAccount;
-import marxbank.model.SavingsAccount;
-import marxbank.model.User;
+import marxbank.core.model.Account;
+import marxbank.core.model.CheckingAccount;
+import marxbank.core.model.MarxAccount;
+import marxbank.core.model.SavingsAccount;
+import marxbank.core.model.User;
+import marxbank.storage.AccountFactory;
 
 public class AccountFactoryTest {
 

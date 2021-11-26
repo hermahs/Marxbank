@@ -5,8 +5,8 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import marxbank.API.AccountRequest;
-import marxbank.model.Account;
-import marxbank.model.User;
+import marxbank.core.model.Account;
+import marxbank.core.model.User;
 import marxbank.repository.AccountRepository;
 import marxbank.repository.UserRepository;
 

@@ -1,7 +1,7 @@
 package marxbank.API;
 
-import marxbank.AccountFactory;
-import marxbank.model.Account;
+import marxbank.core.model.Account;
+import marxbank.storage.AccountFactory;
 
 /**
  * Klassen holder på informasjonen frontenden må formidle fra brukeren når de ønsker å oppprette en ny bankkonto. 

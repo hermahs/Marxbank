@@ -2,7 +2,8 @@ package marxbank.repository;
 
 import java.util.Optional;
 import org.springframework.data.repository.CrudRepository;
-import marxbank.model.Token;
+
+import marxbank.core.model.Token;
 
 public interface TokenRepository extends CrudRepository<Token, Long> {
   Optional<Token> findById(Long id);

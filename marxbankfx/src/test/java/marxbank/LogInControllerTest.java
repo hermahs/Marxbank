@@ -12,7 +12,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-import marxbank.model.User;
+import marxbank.core.model.User;
+import marxbank.storage.DataManager;
 
 public class LogInControllerTest extends ApplicationTest {
 

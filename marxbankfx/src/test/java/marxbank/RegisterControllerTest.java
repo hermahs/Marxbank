@@ -19,7 +19,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import marxbank.model.User;
+import marxbank.core.model.User;
+import marxbank.marxbankfx.RegisterController;
+import marxbank.storage.DataManager;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 

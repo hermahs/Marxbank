@@ -2,7 +2,8 @@ package marxbank.repository;
 
 import java.util.Optional;
 import org.springframework.data.repository.CrudRepository;
-import marxbank.model.User;
+
+import marxbank.core.model.User;
 
 public interface UserRepository extends CrudRepository<User, Long> {
 

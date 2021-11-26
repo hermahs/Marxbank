@@ -4,8 +4,9 @@ import java.util.UUID;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import marxbank.model.Token;
-import marxbank.model.User;
+
+import marxbank.core.model.Token;
+import marxbank.core.model.User;
 import marxbank.repository.TokenRepository;
 import marxbank.repository.UserRepository;
 
