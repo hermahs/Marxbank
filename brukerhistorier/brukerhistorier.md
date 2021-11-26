@@ -21,7 +21,7 @@ Som en bankkunde ønsker jeg muligheten til å opprette ulike kontoer i banken s
 * Navn på konto
 
 ### Illustrerende skjermbilde
-<img src="Illustration-us1.png" width="400">
+<img src="Illustration-vue-us1.png" width="400">
 
 
 ## Overføre (#2) – høy prioritet
@@ -39,7 +39,7 @@ Som en bankkunde ønsker jeg muligheten til overføre penger slik at jeg kan bet
 * Forfallsdato
 
 ### Illustrerende skjermbilde
-<img src="Illustration-us2.png" width="400">
+<img src="Illustration-vue-us2.png" width="400">
 
 
 ## Betalingsoversikt (#3) – middels prioritet
@@ -55,7 +55,7 @@ Som en bankkunde ønsker jeg muligheten til ha oversikt over betalinger både ti
 * Dato for hver enkelt transaksjon
 
 ### Illustrerende skjermbilde
-<img src="Illustration-us3.png" width="400">
+<img src="Illustration-vue-us3.png" width="400">
 
 
 ## Logg ut (#4) – lav prioritet
@@ -68,7 +68,7 @@ Som en bankkunde ønsker jeg muligheten til å logge ut slik at uvedkommende ikk
 * Funksjonen/symbolet for å logge ut
 
 ### Illustrerende skjermbilde
-<img src="Illustration-us4.png" width="400">
+<img src="Illustration-vue-us4.png" width="400">
 
 
 ## Sparekalkulator (#5) – middels prioritet
@@ -83,4 +83,4 @@ Som en bankkunde ønsker jeg å se hvor mye sparepengene mine kan vokse over en 
 * Totalbeløp etter perioden (uten skatt)
 
 ### Illustrerende skjermbilde
-<img src="Illustration-us5.png" width="400">
+<img src="Illustration-vue-us5.png" width="400">
