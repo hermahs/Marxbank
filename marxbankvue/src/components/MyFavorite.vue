@@ -6,7 +6,7 @@
           {{ accName }}
         </p>
         <p class="text-left text-xs">
-          {{ accNumber }}
+          {{ id }}
         </p>
       </div>
       <p class="text-left mt-2 font-medium">kr {{ balance }}</p>
@@ -17,7 +17,20 @@
 <script>
 export default {
   name: "MyFavorite",
-  props: ["accName", "balance", "accNumber"],
+  props: {
+    accName: {
+      type: String,
+      default: "",
+    },
+    balance: {
+      type: Number,
+      default: 0,
+    },
+    id: {
+      type: Number,
+      default: 0,
+    },
+  },
 };
 </script>
 

@@ -1,6 +1,5 @@
 package marxbank.core.model;
 
-import java.util.concurrent.ThreadLocalRandom;
 import marxbank.core.util.AccountType;
 
 public class SavingsAccount extends Account {
@@ -60,12 +59,6 @@ public class SavingsAccount extends Account {
    */
   @Override
   public int generateAccountNumber() {
-    String accNumberString = "1";
-    for (int i = 0; i < 3; i++) {
-      accNumberString =
-          accNumberString.concat(String.valueOf(ThreadLocalRandom.current().nextInt(10)));
-    }
-    int accNumber = Integer.parseInt(accNumberString);
-    return accNumber;
+    return Math.toIntExact(this.getId()) + 40000;
   }
 }

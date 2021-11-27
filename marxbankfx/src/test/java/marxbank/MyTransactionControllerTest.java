@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -55,10 +56,11 @@ public class MyTransactionControllerTest extends ApplicationTest {
 
   @BeforeEach
   private void beforeEach() throws IOException {
+    DataManager.resetData();
     DataManager.setPath(tempDir.toFile().getCanonicalPath());
     user = new User("username", "email@email.com", "password");
-    a = new CheckingAccount(user, "test1");
-    b = new CheckingAccount(user, "test2");
+    a = DataManager.createAccount("Sparekonto", user, "test1");
+    b = DataManager.createAccount("Sparekonto", user, "test2");
     controller.initData(user);
   }
 
@@ -70,8 +72,9 @@ public class MyTransactionControllerTest extends ApplicationTest {
   @Test
   public void testValidTransaction() {
     a.deposit(100);
-    clickOn("#myAccountsList").clickOn("#" + a.getId());
-    clickOn("#recieverText").write("#" + b.getId());
+    assertEquals(100, a.getBalance());
+    clickOn("#myAccountsList").clickOn("#" + a.getAccountNumber());
+    clickOn("#recieverText").write("#" + b.getAccountNumber());
     clickOn("#amountText").write("100");
     clickOn("#transactionBtn");
     assertEquals(0, a.getBalance());
@@ -89,7 +92,7 @@ public class MyTransactionControllerTest extends ApplicationTest {
     assertEquals(0, b.getBalance());
     assertEquals("Noe gikk galt.", ((Label) lookup("#transactionFailedMsg").query()).getText());
 
-    clickOn("#myAccountsList").clickOn("#" + a.getId());
+    clickOn("#myAccountsList").clickOn("#" + a.getAccountNumber());
     assertEquals(100, a.getBalance());
     assertEquals(0, b.getBalance());
     assertEquals("Noe gikk galt.", ((Label) lookup("#transactionFailedMsg").query()).getText());
@@ -98,8 +101,8 @@ public class MyTransactionControllerTest extends ApplicationTest {
   @Test
   public void testEmptyAmount() {
     a.deposit(100);
-    clickOn("#myAccountsList").clickOn("#" + a.getId());
-    clickOn("#recieverText").write("#" + b.getId());
+    clickOn("#myAccountsList").clickOn("#" + a.getAccountNumber());
+    clickOn("#recieverText").write("#" + b.getAccountNumber());
     clickOn("#transactionBtn");
     assertEquals(100, a.getBalance());
     assertEquals(0, b.getBalance());
@@ -110,8 +113,8 @@ public class MyTransactionControllerTest extends ApplicationTest {
   public void testInvalidAmount() {
     a.deposit(100);
     a.setName("name");
-    clickOn("#myAccountsList").clickOn("#" + a.getId());
-    clickOn("#recieverText").write("#" + b.getId());
+    clickOn("#myAccountsList").clickOn("#" + a.getAccountNumber());
+    clickOn("#recieverText").write("#" + b.getAccountNumber());
     clickOn("#amountText").write("101");
     clickOn("#transactionBtn");
     assertEquals(100, a.getBalance());

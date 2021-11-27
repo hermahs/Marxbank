@@ -11,12 +11,8 @@
     <td class="px-4 py-3 font-bold">
       {{ date }}
     </td>
-    <td class="px-4 py-3 text-sm">
-      {{ fromAccount.name }}
-    </td>
-    <td class="px-4 py-3 text-sm">
-      {{ toAccount.name }}
-    </td>
+    <td class="px-4 py-3 text-sm">{{ fromAccount.name }} : {{ from }}</td>
+    <td class="px-4 py-3 text-sm">{{ toAccount.name }} : {{ to }}</td>
     <td class="px-4 py-3 text-xs">
       <span
         class="
@@ -38,7 +34,24 @@
 <script>
 export default {
   name: "Transaction",
-  props: ["date", "from", "to", "amount"],
+  props: {
+    date: {
+      type: String,
+      default: "",
+    },
+    from: {
+      type: Number,
+      default: 0,
+    },
+    to: {
+      type: Number,
+      default: 0,
+    },
+    amount: {
+      type: Number,
+      default: 0,
+    },
+  },
   data() {
     return {
       fromAccount: null,

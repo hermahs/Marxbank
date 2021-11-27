@@ -17,12 +17,10 @@ export const actions: ActionTree<AccountState, RootState> = {
       .then((response) => {
         let accounts: Array<Account> = [];
         response.data.forEach((element: any) => {
-          console.log(element);
           const account: Account = {
             id: element.id,
             userId: element.user,
             name: element.name,
-            accNumber: element.accountNumber,
             balance: element.balance,
             type: element.type,
             interest: element.interestRate,
@@ -48,12 +46,10 @@ export const actions: ActionTree<AccountState, RootState> = {
       .then((response) => {
         let accounts: Array<Account> = [];
         response.data.forEach((element: any) => {
-          console.log(element);
           const account: Account = {
             id: element.id,
             userId: element.userId,
             name: element.name,
-            accNumber: element.accountNumber,
             balance: null,
             type: element.type,
             interest: null,
@@ -88,7 +84,6 @@ export const actions: ActionTree<AccountState, RootState> = {
           id: response.data.id,
           userId: response.data.user,
           name: response.data.name,
-          accNumber: response.data.accountNumber,
           balance: response.data.balance,
           type: response.data.type,
           interest: response.data.interestRate,
@@ -120,7 +115,6 @@ export const actions: ActionTree<AccountState, RootState> = {
           id: response.data.id,
           userId: response.data.userId,
           name: response.data.name,
-          accNumber: response.data.accountNumber,
           balance: null,
           type: response.data.type,
           interest: null,
@@ -151,7 +145,6 @@ export const actions: ActionTree<AccountState, RootState> = {
           id: response.data.id,
           userId: response.data.user,
           name: response.data.name,
-          accNumber: response.data.accountNumber,
           balance: response.data.balance,
           type: response.data.type,
           interest: response.data.interestRate,
@@ -180,7 +173,6 @@ export const actions: ActionTree<AccountState, RootState> = {
           id: response.data.id,
           userId: response.data.user,
           name: response.data.name,
-          accNumber: response.data.accountNumber,
           balance: response.data.balance,
           type: response.data.type,
           interest: response.data.interestRate,
@@ -209,7 +201,6 @@ export const actions: ActionTree<AccountState, RootState> = {
           id: response.data.id,
           userId: response.data.user,
           name: response.data.name,
-          accNumber: response.data.accountNumber,
           balance: response.data.balance,
           type: response.data.type,
           interest: response.data.interestRate,

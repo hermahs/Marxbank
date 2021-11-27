@@ -17,7 +17,7 @@
         <p class="font-bold">
           {{ account.name }}
         </p>
-        <p>{{ account.accNumber }}</p>
+        <p>{{ account.id }}</p>
       </div>
     </div>
     <button v-if="reciever" class="button w-1/3 mt-2" @click="searchForAccount">
@@ -27,7 +27,7 @@
       Fant ikke konto med gitt id
     </p>
     <div class="textbox">
-      <p class="float-left">Konto: {{ selectedAccount.accNumber }}</p>
+      <p class="float-left">Konto: {{ selectedAccount.id }}</p>
       <p v-if="!reciever" class="float-right">
         {{ selectedAccount.balance }} kr
       </p>
@@ -41,6 +41,31 @@ import { mapActions, mapGetters } from "vuex";
 
 export default {
   name: "SearchBar",
+  props: {
+    data: {
+      type: Array,
+      default: () => [],
+    },
+    /**
+     * if the searchbar is for the reciever account,
+     * additional information should not be displayed
+     */
+    reciever: {
+      type: Boolean,
+      default: false,
+    },
+    placeholder: {
+      type: String,
+      default: "",
+    },
+  },
+  emits: ["termChanged", "accountSelected"],
+  data() {
+    return {
+      selectedAccount: {},
+      accountNotFound: false,
+    };
+  },
   computed: {
     ...mapGetters(["getAccountById", "accountStatus"]),
   },
@@ -55,7 +80,8 @@ export default {
       this.$emit("accountSelected", account);
     },
     async searchForAccount() {
-      const searchId = this.$refs.inputField.value;
+      const searchId = +this.$refs.inputField.value;
+      console.log(searchId);
       await this.fetchPublicAccountById(searchId);
       if (this.accountStatus === "error") {
         this.accountNotFound = true;
@@ -66,21 +92,6 @@ export default {
       console.log(account);
       this.onSelectAccount(account);
     },
-  },
-  props: {
-    data: Array,
-    /**
-     * if the searchbar is for the reciever account,
-     * additional information should not be displayed
-     */
-    reciever: Boolean,
-    placeholder: String,
-  },
-  data() {
-    return {
-      selectedAccount: {},
-      accountNotFound: false,
-    };
   },
 };
 </script>

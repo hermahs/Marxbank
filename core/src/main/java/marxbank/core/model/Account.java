@@ -3,13 +3,11 @@ package marxbank.core.model;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
-import java.util.UUID;
 import marxbank.core.util.AccountType;
-
 public abstract class Account {
 
   private Long id;
-
+  //account number is only needed for the local storage (fx) version of the app
   private int accountNumber;
 
   private AccountType type;
@@ -74,7 +72,8 @@ public abstract class Account {
    * @param name - Name of the account
    */
   public Account(User user, double interestRate, AccountType type, String name) {
-    this(UUID.randomUUID().getMostSignificantBits() & Long.MAX_VALUE, user, interestRate, type);
+    this((long) 0, user, interestRate, type);
+    //this(UUID.randomUUID().getMostSignificantBits() & Long.MAX_VALUE, user, interestRate, type);
     validateName(name);
     this.name = name;
   }

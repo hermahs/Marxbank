@@ -6,8 +6,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import marxbank.storage.DataManager;
-
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 /**
  * JavaFX App
@@ -19,13 +20,19 @@ public class App extends Application {
   @Override
   public void start(Stage stage) throws IOException {
     scene = new Scene(loadFxml("LogIn"), 640, 480);
+    scene.getStylesheets().add(getClass().getResource("style/MainStyle.css").toExternalForm());
     stage.setScene(scene);
     stage.show();
-    DataManager.setPath("../data");
+
+    if (!Files.exists(Paths.get(System.getProperty("user.home"), "data"))) {
+      Files.createDirectories(Paths.get(System.getProperty("user.home"), "data"));
+    }
+
+    DataManager.setPath(Paths.get(System.getProperty("user.home"), "data").toString());
     try {
       DataManager.parse();
     } catch (Exception e) {
-      e.printStackTrace();
+      System.out.println("yeet");
     }
   }
 
