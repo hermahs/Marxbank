@@ -3,4 +3,5 @@ module marxbank.storage {
     requires com.fasterxml.jackson.databind;
 
     exports marxbank.storage;
+    opens marxbank.storage;
 }

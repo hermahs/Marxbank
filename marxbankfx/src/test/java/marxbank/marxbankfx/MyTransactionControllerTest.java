@@ -1,4 +1,4 @@
-package marxbank;
+package marxbank.marxbankfx;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -20,7 +20,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import marxbank.core.model.Account;
 import marxbank.core.model.User;
-import marxbank.marxbankfx.TransactionController;
 import marxbank.storage.DataManager;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;

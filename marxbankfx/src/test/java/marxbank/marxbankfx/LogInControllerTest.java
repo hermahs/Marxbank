@@ -1,4 +1,4 @@
-package marxbank;
+package marxbank.marxbankfx;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

@@ -1,4 +1,4 @@
-package marxbank;
+package marxbank.storage;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -19,7 +19,6 @@ import marxbank.core.model.Account;
 import marxbank.core.model.SavingsAccount;
 import marxbank.core.model.Transaction;
 import marxbank.core.model.User;
-import marxbank.storage.DataManager;
 
 public class DataManagerTest {
 

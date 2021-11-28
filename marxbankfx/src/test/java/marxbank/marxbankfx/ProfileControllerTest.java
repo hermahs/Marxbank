@@ -1,4 +1,4 @@
-package marxbank;
+package marxbank.marxbankfx;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -27,7 +27,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import marxbank.core.model.User;
-import marxbank.marxbankfx.ProfileController;
 import marxbank.storage.DataManager;
 
 public class ProfileControllerTest extends ApplicationTest {

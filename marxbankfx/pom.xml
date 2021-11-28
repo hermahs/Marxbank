@@ -96,9 +96,12 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.0</version>
                 <configuration>
-                    <release>11</release>
+                    <argline>
+                    --add-exports javafx.graphics/com.sun.javafx.application=ALL-UNNAMED
+                    --add-opens javafx.graphics/com.sun.glass.ui=ALL-UNNAMED --add-exports javafx.graphics/com.sun.glass.ui=ALL-UNNAMED
+                    --add-exports javafx.graphics/com.sun.glass.ui.delegate=ALL-UNNAMED
+                    </argline>
                 </configuration>
             </plugin>
 
@@ -112,7 +115,7 @@
                     <stripDebug>true</stripDebug>
                     <noManPages>true</noManPages>
                     <launcher>marxbankfx</launcher>
-                    <mainClass>marxbankfx/marxbank.marxbankfx.App</mainClass>
+                    <mainClass>marxbank.marxbankfx/marxbank.marxbankfx.App</mainClass>
                     <jlinkImageName>marxbankfx</jlinkImageName>
                     <jlinkZipName>marxbankfx</jlinkZipName>
                 </configuration>

@@ -1,4 +1,4 @@
-package marxbank;
+package marxbank.marxbankfx;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -25,9 +25,6 @@ import marxbank.core.model.Account;
 import marxbank.core.model.SavingsAccount;
 import marxbank.core.model.Transaction;
 import marxbank.core.model.User;
-import marxbank.marxbankfx.AccountController;
-import marxbank.marxbankfx.HomeController;
-import marxbank.marxbankfx.MainController;
 import marxbank.storage.DataManager;
 import marxbank.marxbankfx.util.Loader; 
 

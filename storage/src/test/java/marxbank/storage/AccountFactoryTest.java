@@ -1,4 +1,4 @@
-package marxbank;
+package marxbank.storage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -13,7 +13,6 @@ import marxbank.core.model.CheckingAccount;
 import marxbank.core.model.MarxAccount;
 import marxbank.core.model.SavingsAccount;
 import marxbank.core.model.User;
-import marxbank.storage.AccountFactory;
 
 public class AccountFactoryTest {
 

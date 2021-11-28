@@ -1,4 +1,4 @@
-package marxbank;
+package marxbank.marxbankfx;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -25,7 +25,6 @@ import javafx.stage.Stage;
 import marxbank.core.model.Account;
 import marxbank.core.model.Transaction;
 import marxbank.core.model.User;
-import marxbank.marxbankfx.CreateNewAccountController;
 import marxbank.storage.DataManager;
 
 public class CreateNewAccountControllerTest extends ApplicationTest {
