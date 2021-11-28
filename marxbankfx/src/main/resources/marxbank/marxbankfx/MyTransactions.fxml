@@ -9,7 +9,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<<<<<<< HEAD:marxbankfx/src/main/resources/marxbank/marxbankfx/MyTransactions.fxml
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="marxbank.marxbankfx.MyTransactionsController">
+=======
+<Pane fx:id="myTransactions" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="marxbank.MyTransactionsController">
+>>>>>>> 205-smaating-i-fx:marxbankfx/src/main/resources/marxbank/MyTransactions.fxml
    <children>
       <Label layoutX="20.0" layoutY="85.0" text="Overføringer">
          <font>

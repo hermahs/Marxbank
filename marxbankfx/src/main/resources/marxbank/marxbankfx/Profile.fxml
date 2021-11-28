@@ -7,7 +7,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<<<<<<< HEAD:marxbankfx/src/main/resources/marxbank/marxbankfx/Profile.fxml
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="marxbank.marxbankfx.ProfileController">
+=======
+<AnchorPane fx:id="profile" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="marxbank.ProfileController">
+>>>>>>> 205-smaating-i-fx:marxbankfx/src/main/resources/marxbank/Profile.fxml
    <children>
       <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -22,11 +26,6 @@
                </font>
             </Label>
             <Label fx:id="usernameLabel" text="\@brukernavn">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <Label fx:id="passwordLabel" text="Passord: *****">
                <font>
                   <Font size="16.0" />
                </font>

@@ -18,13 +18,18 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import marxbank.core.model.Account;
 import marxbank.core.model.SavingsAccount;
 import marxbank.core.model.Transaction;
 import marxbank.core.model.User;
+import marxbank.marxbankfx.AccountController;
 import marxbank.marxbankfx.HomeController;
+import marxbank.marxbankfx.MainController;
 import marxbank.storage.DataManager;
+import marxbank.marxbankfx.util.Loader; 
 
 public class HomeControllerTest extends ApplicationTest {
 
@@ -37,6 +42,8 @@ public class HomeControllerTest extends ApplicationTest {
   private Account account2;
   private Transaction transaction;
   private Parent root;
+  private AnchorPane accountPane;
+  private AccountController accountController;
 
   @TempDir
   static Path tempDir;
@@ -48,6 +55,10 @@ public class HomeControllerTest extends ApplicationTest {
     this.controller = loader.getController();
     stage.setScene(new Scene(root));
     stage.show();
+
+    FXMLLoader accountLoader = Loader.loadFXML(MainController.class, "Account.fxml");
+    this.accountPane = accountLoader.load();
+    this.accountController = accountLoader.getController();
   }
 
   /**
@@ -105,7 +116,7 @@ public class HomeControllerTest extends ApplicationTest {
     Platform.runLater(new Runnable() {
       @Override
       public void run() {
-        controller.initData(user);
+        controller.initData(user, new Pane(), accountPane, accountController);
         Label label = lookup("#accountLabel").query();
         assertNotNull(label);
         assertTrue(label.getText().equals("Annas brukskonto"));
@@ -123,7 +134,7 @@ public class HomeControllerTest extends ApplicationTest {
     Platform.runLater(new Runnable() {
       @Override
       public void run() {
-        controller.initData(user);
+        controller.initData(user, new Pane(), accountPane, accountController);
         Label label = lookup("#amountLabel").query();
         assertTrue(label.getText().equals("kr " + account1.getBalance()));
       }
@@ -140,7 +151,7 @@ public class HomeControllerTest extends ApplicationTest {
     Platform.runLater(new Runnable() {
       @Override
       public void run() {
-        controller.initData(user);
+        controller.initData(user, new Pane(), accountPane, accountController);
         Label label = lookup("#accountNumberLabel").query();
         assertTrue(label.getText().equals(Integer.toString(account1.getAccountNumber())));
       }
@@ -157,7 +168,7 @@ public class HomeControllerTest extends ApplicationTest {
     Platform.runLater(new Runnable() {
       @Override
       public void run() {
-        controller.initData(user);
+        controller.initData(user, new Pane(), accountPane, accountController);
         Label label = lookup("#dateLabel").query();
         assertTrue(label.getText().equals(transaction.getDateString()));
       }
@@ -175,7 +186,7 @@ public class HomeControllerTest extends ApplicationTest {
     Platform.runLater(new Runnable() {
       @Override
       public void run() {
-        controller.initData(user);
+        controller.initData(user, new Pane(), accountPane, accountController);
         Label label = lookup("#secondAccountLabel").query();
         assertTrue(label.getText().equals("Fra: " + transaction.getFrom().getName()));
       }
@@ -193,7 +204,7 @@ public class HomeControllerTest extends ApplicationTest {
     Platform.runLater(new Runnable() {
       @Override
       public void run() {
-        controller.initData(user);
+        controller.initData(user, new Pane(), accountPane, accountController);
         Label label = lookup("#otherAccountLabel").query();
         assertTrue(label.getText().equals("Til: " + transaction.getReciever().getName()));
       }
@@ -211,7 +222,7 @@ public class HomeControllerTest extends ApplicationTest {
     Platform.runLater(new Runnable() {
       @Override
       public void run() {
-        controller.initData(user);
+        controller.initData(user, new Pane(), accountPane, accountController);
         Label label = lookup("#secondAmountLabel").query();
         assertTrue(label.getText().equals("kr " + Double.toString(transaction.getAmount())));
       }

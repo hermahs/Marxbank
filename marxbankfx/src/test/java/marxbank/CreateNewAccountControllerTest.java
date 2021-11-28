@@ -17,12 +17,12 @@ import org.testfx.framework.junit5.ApplicationTest;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.input.MouseButton;
 import javafx.stage.Stage;
 import marxbank.core.model.Account;
-import marxbank.core.model.SavingsAccount;
 import marxbank.core.model.Transaction;
 import marxbank.core.model.User;
 import marxbank.marxbankfx.CreateNewAccountController;
@@ -68,8 +68,8 @@ public class CreateNewAccountControllerTest extends ApplicationTest {
   @Test
   @DisplayName("test create new account no name")
   public void testCreateNewAccountNoName() {
-    clickOn("#handleCreateAccountButton");
-    assertEquals("Konto trenger et navn.", lookup("#errorMsg").queryAs(Label.class).getText());
+    Button btn = (Button) lookup("#handleCreateAccountButton").queryAs(Button.class);
+    assertTrue(btn.isDisabled());
   }
 
   @Test

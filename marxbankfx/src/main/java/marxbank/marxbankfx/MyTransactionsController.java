@@ -3,7 +3,6 @@ package marxbank.marxbankfx;
 import java.util.ArrayList;
 import java.util.List;
 import marxbank.marxbankfx.components.TransactionComponent;
-import marxbank.core.model.Account;
 import marxbank.core.model.Transaction;
 import marxbank.core.model.User;
 import javafx.collections.FXCollections;
@@ -17,14 +16,11 @@ public class MyTransactionsController {
   private ListView<TransactionComponent> transactionsContainer;
 
   public void initData(User user) {
-
-    for (Account a : user.getAccounts()) {
-      System.out.println(a.getTransactions());
-    }
-
     if (user.getAccounts().size() == 0) {
       return;
     }
+
+    transactionsContainer.getItems().clear();
 
     List<Transaction> ml = new ArrayList<Transaction>();
     List<TransactionComponent> l = new ArrayList<TransactionComponent>();

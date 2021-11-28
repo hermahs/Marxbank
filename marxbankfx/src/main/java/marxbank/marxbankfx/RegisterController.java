@@ -1,6 +1,9 @@
 package marxbank.marxbankfx;
 
 import java.io.IOException;
+
+import javafx.beans.binding.Bindings;
+import javafx.beans.binding.BooleanBinding;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +16,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import marxbank.core.model.Account;
 import marxbank.core.model.User;
+import marxbank.marxbankfx.util.Loader;
 import marxbank.storage.DataManager;
 import javafx.scene.Node;
 
@@ -34,20 +38,22 @@ public class RegisterController {
   private Label registerFailedMsg;
   @FXML
   private Button cancelBtn;
-
-  public RegisterController() {
-    // DataManager.setPath("../data");
-    // try {
-    // DataManager.parse();
-    // } catch (Exception e) {
-    // e.printStackTrace();
-    // }
-  }
+  @FXML
+  private Parent root;
 
   @FXML
   private void initialize() {
     registerFailedMsg.setVisible(false);
     registerFailedMsg.setText("");
+    setBtnDisableProperty();
+  }
+
+  private void setBtnDisableProperty() {
+    BooleanBinding emptyText =
+        Bindings.isEmpty(usernameText.textProperty()).or(Bindings.isEmpty(emailText.textProperty()))
+            .or(Bindings.isEmpty(password1Text.textProperty()))
+            .or(Bindings.isEmpty(password2Text.textProperty()));
+    registerBtn.disableProperty().bind(emptyText);
   }
 
   @FXML
@@ -67,8 +73,7 @@ public class RegisterController {
     try {
       User user = DataManager.createUser(usernameText.getText(), emailText.getText(),
           password1Text.getText());
-      Account initialAccount =
-          DataManager.createAccount("Brukskonto", user, "Min brukskonto");
+      Account initialAccount = DataManager.createAccount("Brukskonto", user, "Min brukskonto");
 
       initialAccount.deposit(200);
 
@@ -86,8 +91,7 @@ public class RegisterController {
     }
     try {
       DataManager.save();
-      FXMLLoader loader = new FXMLLoader();
-      loader.setLocation(getClass().getResource("LogIn.fxml"));
+      FXMLLoader loader = Loader.loadFXML(getClass(), "LogIn.fxml");
       AnchorPane pane = loader.load();
       register.getChildren().setAll(pane);
 
@@ -100,17 +104,7 @@ public class RegisterController {
   private void handleCancel(ActionEvent e) throws IOException {
     DataManager.setLoggedInUser(null);
 
-    FXMLLoader loader = new FXMLLoader();
-    loader.setLocation(getClass().getResource("LogIn.fxml"));
-    Parent tableViewParent = loader.load();
-
-    Scene tableViewScene = new Scene(tableViewParent);
-
-    // Get stage information
-    Stage window = (Stage) ((Node) e.getSource()).getScene().getWindow();
-
-    window.setScene(tableViewScene);
-    window.show();
+    Loader.changeScene(getClass(), "LogIn.fxml", e);
   }
 
 }
