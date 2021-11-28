@@ -1,9 +1,9 @@
-package marxbank.endpoint;
+package marxbank.backend.endpoint;
 
-import marxbank.API.AccountRequest;
-import marxbank.API.AccountResponse;
-import marxbank.API.DepositWithdrawRequest;
-import marxbank.API.PublicAccountResponse;
+import marxbank.api.AccountRequest;
+import marxbank.api.AccountResponse;
+import marxbank.api.DepositWithdrawRequest;
+import marxbank.api.PublicAccountResponse;
 import marxbank.core.model.Account;
 import marxbank.core.model.Transaction;
 import marxbank.core.model.User;
@@ -25,10 +25,10 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import marxbank.repository.AccountRepository;
-import marxbank.service.AccountService;
-import marxbank.service.AuthService;
-import marxbank.service.TransactionService;
+import marxbank.backend.repository.AccountRepository;
+import marxbank.backend.service.AccountService;
+import marxbank.backend.service.AuthService;
+import marxbank.backend.service.TransactionService;
 
 @RestController
 @RequestMapping("/accounts")

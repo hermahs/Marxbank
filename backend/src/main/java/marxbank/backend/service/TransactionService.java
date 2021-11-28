@@ -1,4 +1,4 @@
-package marxbank.service;
+package marxbank.backend.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,12 +6,13 @@ import java.util.stream.Collectors;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import marxbank.API.TransactionRequest;
-import marxbank.API.TransactionResponse;
+
+import marxbank.api.TransactionRequest;
+import marxbank.api.TransactionResponse;
 import marxbank.core.model.Account;
 import marxbank.core.model.Transaction;
-import marxbank.repository.AccountRepository;
-import marxbank.repository.TransactionRepository;
+import marxbank.backend.repository.AccountRepository;
+import marxbank.backend.repository.TransactionRepository;
 
 @Service
 public class TransactionService {

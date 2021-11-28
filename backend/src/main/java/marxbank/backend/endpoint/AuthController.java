@@ -1,4 +1,4 @@
-package marxbank.endpoint;
+package marxbank.backend.endpoint;
 
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,15 +13,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-import marxbank.API.LogInRequest;
-import marxbank.API.LogInResponse;
-import marxbank.API.SignUpRequest;
-import marxbank.API.UserResponse;
+import marxbank.api.LogInRequest;
+import marxbank.api.LogInResponse;
+import marxbank.api.SignUpRequest;
+import marxbank.api.UserResponse;
 import marxbank.core.model.Token;
 import marxbank.core.model.User;
-import marxbank.repository.TokenRepository;
-import marxbank.repository.UserRepository;
-import marxbank.service.AuthService;
+import marxbank.backend.repository.TokenRepository;
+import marxbank.backend.repository.UserRepository;
+import marxbank.backend.service.AuthService;
 
 /**
  * Contains all requests connected to login/logout and signup.

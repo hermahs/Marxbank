@@ -12,13 +12,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
 import marxbank.core.model.Account;
 import marxbank.core.model.User;
 import marxbank.marxbankfx.util.Loader;
-import marxbank.storage.DataManager;
-import javafx.scene.Node;
+import marxbank.storage.DataManager;;
 
 public class RegisterController {
 

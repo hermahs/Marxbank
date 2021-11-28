@@ -1,4 +1,4 @@
-package marxbank.service;
+package marxbank.backend.service;
 
 import java.util.UUID;
 import javax.transaction.Transactional;
@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 
 import marxbank.core.model.Token;
 import marxbank.core.model.User;
-import marxbank.repository.TokenRepository;
-import marxbank.repository.UserRepository;
+import marxbank.backend.repository.TokenRepository;
+import marxbank.backend.repository.UserRepository;
 
 /**
  * using the Bearer Authentication system. This lets a user that is logged in be connected to a

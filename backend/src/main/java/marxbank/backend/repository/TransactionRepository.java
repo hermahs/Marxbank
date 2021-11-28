@@ -1,4 +1,4 @@
-package marxbank.repository;
+package marxbank.backend.repository;
 
 import java.util.List;
 import java.util.Optional;

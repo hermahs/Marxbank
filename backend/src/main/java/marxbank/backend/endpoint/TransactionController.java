@@ -1,4 +1,4 @@
-package marxbank.endpoint;
+package marxbank.backend.endpoint;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,15 +18,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-import marxbank.API.TransactionRequest;
-import marxbank.API.TransactionResponse;
+import marxbank.api.TransactionRequest;
+import marxbank.api.TransactionResponse;
 import marxbank.core.model.Account;
 import marxbank.core.model.User;
-import marxbank.repository.AccountRepository;
-import marxbank.repository.TransactionRepository;
-import marxbank.service.AccountService;
-import marxbank.service.AuthService;
-import marxbank.service.TransactionService;
+import marxbank.backend.repository.AccountRepository;
+import marxbank.backend.repository.TransactionRepository;
+import marxbank.backend.service.AccountService;
+import marxbank.backend.service.AuthService;
+import marxbank.backend.service.TransactionService;
 
 
 @RestController

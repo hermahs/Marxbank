@@ -1,4 +1,4 @@
-package marxbank;
+package marxbank.backend;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -20,15 +20,15 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.annotation.DirtiesContext.ClassMode;
 import org.springframework.web.server.ResponseStatusException;
 
-import marxbank.API.AccountRequest;
-import marxbank.API.DepositWithdrawRequest;
-import marxbank.API.LogInRequest;
-import marxbank.API.SignUpRequest;
-import marxbank.API.TransactionRequest;
-import marxbank.API.TransactionResponse;
-import marxbank.endpoint.AccountController;
-import marxbank.endpoint.AuthController;
-import marxbank.endpoint.TransactionController;
+import marxbank.backend.endpoint.AccountController;
+import marxbank.backend.endpoint.AuthController;
+import marxbank.backend.endpoint.TransactionController;
+import marxbank.api.AccountRequest;
+import marxbank.api.DepositWithdrawRequest;
+import marxbank.api.LogInRequest;
+import marxbank.api.SignUpRequest;
+import marxbank.api.TransactionRequest;
+import marxbank.api.TransactionResponse;
 import marxbank.core.util.AccountType;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)

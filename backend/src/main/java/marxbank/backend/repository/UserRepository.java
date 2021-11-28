@@ -1,4 +1,4 @@
-package marxbank.repository;
+package marxbank.backend.repository;
 
 import java.util.Optional;
 import org.springframework.data.repository.CrudRepository;

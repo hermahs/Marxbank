@@ -1,4 +1,4 @@
-package marxbank;
+package marxbank.backend;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -16,12 +16,12 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.annotation.DirtiesContext.ClassMode;
 import org.springframework.web.server.ResponseStatusException;
 
-import marxbank.API.LogInRequest;
-import marxbank.API.SignUpRequest;
+import marxbank.api.LogInRequest;
+import marxbank.api.SignUpRequest;
 import marxbank.core.model.User;
-import marxbank.endpoint.AuthController;
-import marxbank.repository.UserRepository;
-import marxbank.service.AuthService;
+import marxbank.backend.endpoint.AuthController;
+import marxbank.backend.repository.UserRepository;
+import marxbank.backend.service.AuthService;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @DirtiesContext(classMode = ClassMode.BEFORE_EACH_TEST_METHOD)

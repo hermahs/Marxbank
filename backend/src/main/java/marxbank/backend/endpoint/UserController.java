@@ -1,8 +1,9 @@
-package marxbank.endpoint;
+package marxbank.backend.endpoint;
 
 import javax.transaction.Transactional;
-import marxbank.API.EditUserRequest;
-import marxbank.API.UserResponse;
+
+import marxbank.api.EditUserRequest;
+import marxbank.api.UserResponse;
 import marxbank.core.model.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +19,8 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
-import marxbank.repository.UserRepository;
-import marxbank.service.AuthService;
+import marxbank.backend.repository.UserRepository;
+import marxbank.backend.service.AuthService;
 
 @RestController
 @RequestMapping("/users")

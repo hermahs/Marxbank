@@ -1,14 +1,15 @@
-package marxbank.service;
+package marxbank.backend.service;
 
 import java.util.ArrayList;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import marxbank.API.AccountRequest;
+
+import marxbank.api.AccountRequest;
 import marxbank.core.model.Account;
 import marxbank.core.model.User;
-import marxbank.repository.AccountRepository;
-import marxbank.repository.UserRepository;
+import marxbank.backend.repository.AccountRepository;
+import marxbank.backend.repository.UserRepository;
 
 @Service
 public class AccountService {
