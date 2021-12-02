@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Marxbank
 
 [![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.stud.ntnu.no/#https://gitlab.stud.idi.ntnu.no/it1901/groups-2021/gr2127/gr2127)
@@ -69,3 +70,6 @@ For å se hvordan vi lagrer dataen vår lokalt med json, se [Readme i storage](m
 ## Kall til Databasen
 
 For å se alle forskjellige kall, strukturen på forespørselen, og hva backend kan sende tilbake. Se [full api dokumentasjon](marxbank/backend/docs/fullAPI.md)
+=======
+# Marxbank
+>>>>>>> 513fccdfe1b5f8766e5619106f74b7d67abbbc9d
